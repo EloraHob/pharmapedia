@@ -1,13 +1,13 @@
 # F-Team [Actual name TBD]
 
-**Team Members**
-> Elora Hoberecht (DEV)
-> Erica Flora Gordy (PM)
-> Haonan Zheng (PROD)
-> Lily Dong (DEV)
+## Team Members  
+> Elora Hoberecht (DEV)  
+> Erica Flora Gordy (PM)  
+> Haonan Zheng (PROD)  
+> Lily Dong (DEV)  
 
-**Mission Statement**
+## Mission Statement 
 [TBD]
 
-**Problem Statement**
+## Problem Statement 
 [TBD]
