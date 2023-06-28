@@ -1,12 +1,13 @@
 # F-Team Fit As A Fiddle
 
 ## Team Members  
+
 | Member Name | Role | 
+| :---       |    :---:   |
 | Erica Gordy | Project Manager |
 | Haonan Zheng | Product Designer |
 | Elora Hoberecht | Developer |
 | Lily Dong | Developer | 
-
 
 ## Mission Statement 
 Our goal is to provide patients with knowledge of their prescribed medications and promote medical literacy for all. 
