@@ -57,7 +57,19 @@ bottom corner of the filter section
 &ensp;&ensp;drugs, and biotech drugs (29 categories available)  
 &ensp;&ensp;- Categories are clickable, and the ones (one or multiple) that are chosen by users will be  highlighted, and being 
 &ensp;&ensp;applied as user click 'apply filter'  
-&ensp;
+Medication title and description card’s grid section:
+&ensp;&ensp;Details:  
+&ensp;&ensp;Card: have the medication title and description on the card (title with bold font weight, description under the title, in light font weight)  
+&ensp;&ensp;Layout: 3x5  
+&ensp;&ensp;- Have current page information in the bottom, above footer section  
+
+## Medication Information Content Page  
+(redirect to this page once user click medication title or card):  
+&ensp;&ensp;keep header and footer  
+&ensp;&ensp;fill the content container in the middle of the page with: medication title, summary, indication, associated conditions, pharmacodynamics, adverse effects, toxicity (from top to bottom) in the separate wide-flatten cards  
+
+## Search Feature  
+
 &ensp;
 &ensp;&ensp;
 
