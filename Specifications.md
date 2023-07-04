@@ -14,10 +14,11 @@ Research from the American Medical Association and the National Institute of Hea
 Our product aims to solve the issue of misinformation and miscommunication surrounding prescription medications. We will have a web page that allows users to search for their medications and receive information about the drug formulas, usages, potential interactions, allergy information, and much more. We will be using an API called DrugBank (for academic research) that contains all the information about medications we might want to display to the user. The user will also be able to filter medications based on a specific category or drug class and various other filterable options. The third feature we are going to implement is to check and inform users of potential interactions between their medications. This will prevent potential harm due to a lack of knowledge of the drug interactions. If time allows, we will also implement a feature where users can create an account and register their medications to receive push notifications. We will manage notifications using Twilio. 
 
 ## Design 
-Homepage: 
-&ensp;Header: display website name, logo; navigation menu; login/sign up; search bar (display them in order from left to right)
+Homepage:  
 
-&ensp;Hero Section: display the banner picture; tagline for illustrating website purpose;
+Header: display website name, logo; navigation menu; login/sign up; search bar (display them in order from left to right)  
+
+Hero Section: display the banner picture; tagline for illustrating website purpose;
 &ensp;&ensp;Features Section: 
 &ensp;&ensp;1. display the website features in card with titles, icons
 &ensp;&ensp;	- basic medication info feature (#medi101)
