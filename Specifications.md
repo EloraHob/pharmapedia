@@ -16,7 +16,7 @@ Our product aims to solve the issue of misinformation and miscommunication surro
 
 # Design 
 ## Homepage
-![homepage](homepage.jpg)
+![homepage](wireframes/homepage.jpg)
 Header: display website name, logo; navigation menu; login/sign up; search bar (display them in order from left to right)  
 
 Hero Section: display the banner picture; tagline for illustrating website purpose;  
@@ -42,11 +42,11 @@ Display three clickable parts in navigation bar: 1. home, 2. features, 3. about 
 &ensp;&ensp;- have the about button, directing users to the ‘about us’ page as being clicked  
 
 ## About Us Page  
-![about_us](about_us.jpg)
+![about_us](wireframes/about_us.jpg)
 Keep the header and footer sections; show page title as ‘about us’; display the content container about our group members with pictures (optional) and short introductions; have another container to show our purpose in a short paragraph.  
 
 ## Static Medication Information Page
-![static](static.jpg)
+![static](wireframes/static.jpg)
 Redirect to this page once user click (basic medication info) feature button in feature section on the homepage or feature button in the navigation menu  
 
 Header & Footer: keep  
@@ -68,13 +68,13 @@ Medication title and description card’s grid section:
 &ensp;&ensp;- Have current page information in the bottom, above footer section  
 
 ## Medication Information Content Page  
-![medication_content](medication_content.jpg)
+![medication_content](wireframes/medication_content.jpg)
 (redirect to this page once user click medication title or card):  
 &ensp;&ensp;- keep header and footer  
 &ensp;&ensp;- fill the content container in the middle of the page with: medication title, summary, indication, associated conditions, pharmacodynamics, adverse effects, toxicity (from top to bottom) in the separate wide-flatten cards  
 
 ## Search Feature   
-![search](search.jpg)
+![search](wireframes/search.jpg)
 (redirect to this page once user click 'Just search' feature button in feature section on the homepage, feature button in the navigation menu, or search icon in the header)  
 
 Header & Footer: keep  
@@ -102,10 +102,10 @@ Error/No result section:
 from our database):  
 &ensp;&ensp; Details: have a line of text: ‘Sorry, we did not find this. T_T’  
 &ensp;&ensp;- Show the number of results found in the right bottom corner of the page  
-![error](error.jpg)
+![error](wireframes/error.jpg)
 
 ## Medication Interaction Feature  
-![interaction](interaction.jpg)
+![interaction](wireframes/interaction.jpg)
 (redirect to this page once user click 'Interaction checker' feature button in feature section on the homepage or feature button in the navigation menu)  
 
 Header & Footer: keep  
