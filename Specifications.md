@@ -2,10 +2,11 @@
 
 ## Team Members  
 | Member Name | Role | 
+| :---       |    :---:   |
 | Erica Gordy | Project Manager |
 | Haonan Zheng | Product Designer |
 | Elora Hoberecht | Developer |
-| Lily Dong | Developer | 
+| Lily Dong | Developer |  
 
 # Problem
 Research from the American Medical Association and the National Institute of Health has found that patients with chronic diseases in the US fail to take their medications as directed about 40-50% of the time ([American Medical Association [AMA], 2023](https://www.ama-assn.org/delivering-care/patient-support-advocacy/8-reasons-patients-dont-take-their-medications#:~:text=Medication%20nonadherence%E2%80%94when%20patients%20don,for%20patients%20with%20chronic%20disease.); [Lee et al., 2006](https://jamanetwork.com/journals/jama/article-abstract/204402); [Kleinsinger, F., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6045499/)). The primary causes of this include excessive cost, misunderstanding of the purpose of the medication(s), fear of side effects or medication dependence, and confusion/difficulty managing dosing schedules for multiple medications. Medication nonadherence contributes to roughly 125,000 preventable deaths in the US and places an economic burden of $100 billion to $300 billion dollars on the healthcare system ([Cutler et al., 2018](https://pubmed.ncbi.nlm.nih.gov/29358417/); [Kleinsinger, F., 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6045499/)). The individual consequences of noncompliance include disease progression, lower quality of life, and increased reliance on medical institutions including hospital visits and admission, nursing homes, and reliance on other medical resources. Medication nonadherence contributes to at least 125,000 preventable deaths annually ([Benjamin, 2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3234383/)). Currently, there are existing pharmacy programs aimed at helping Medicare patients stay on track with their medications, in which a pharmacist checks patients’ prescription history and calls the patient to discuss adherence barriers. However, these programs do not help non-elderly patients– there has been a push in recent years for providers to communicate openly with their patients about the medications they prescribe, but overwhelmed physicians may not have time to fully discuss the details of these medications with patients. How might we develop a tool to help chronic disease patients make better informed decisions about their medications and improve medical literacy?
