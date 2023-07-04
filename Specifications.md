@@ -14,24 +14,25 @@ Research from the American Medical Association and the National Institute of Hea
 Our product aims to solve the issue of misinformation and miscommunication surrounding prescription medications. We will have a web page that allows users to search for their medications and receive information about the drug formulas, usages, potential interactions, allergy information, and much more. We will be using an API called DrugBank (for academic research) that contains all the information about medications we might want to display to the user. The user will also be able to filter medications based on a specific category or drug class and various other filterable options. The third feature we are going to implement is to check and inform users of potential interactions between their medications. This will prevent potential harm due to a lack of knowledge of the drug interactions. If time allows, we will also implement a feature where users can create an account and register their medications to receive push notifications. We will manage notifications using Twilio. 
 
 ## Design 
-Homepage:  
+# Homepage
 
 Header: display website name, logo; navigation menu; login/sign up; search bar (display them in order from left to right)  
 
-Hero Section: display the banner picture; tagline for illustrating website purpose;
-&ensp;&ensp;Features Section: 
-&ensp;&ensp;1. display the website features in card with titles, icons
-&ensp;&ensp;	- basic medication info feature (#medi101)
-&ensp;&ensp;	- search feature (just search)
-&ensp;&ensp;	- interaction check feature (potential interaction between drugs checking)
-&ensp;&ensp;2. direct to the feature page after clicking the corresponding feature card
-&ensp;&ensp;3. have ‘...’ or ‘learn more’ button on right bottom corner of the card
+Hero Section: display the banner picture; tagline for illustrating website purpose;  
+
+Features Section:  
+&ensp;&ensp;1. display the website features in card with titles, icons  
+&ensp;&ensp;	- basic medication info feature (#medi101)  
+&ensp;&ensp;	- search feature (just search)  
+&ensp;&ensp;	- interaction check feature (potential interaction between drugs checking)  
+&ensp;&ensp;2. direct to the feature page after clicking the corresponding feature card  
+&ensp;&ensp;3. have ‘...’ or ‘learn more’ button on right bottom corner of the card  
 &ensp;&ensp;4. show the drop-down cards, displaying feature descriptions, highlights  in bullet points, once click on ‘...’ and/
-&ensp;&ensp;    or ‘learn more’ button
+&ensp;&ensp;    or ‘learn more’ button  
 
-&ensp;Footer: display the information about copyrights and disclaimer; display the social media links or icons; displays the quick links for support resources; have a back-to-top button
+Footer: display the information about copyrights and disclaimer; display the social media links or icons; displays the quick links for support resources; have a back-to-top button  
 
-Navigation: 
+# Navigation
 &ensp; Display three clickable parts in navigation bar: 1. home, 2. features, 3. about (display them in order from left to right)
 &ensp;&ensp;1. Once click the ‘home’ button, redirect user to the home page
 &ensp;&ensp;2. provide the drop down menu as user click or hover over ‘features’ button, including the clickable buttons for 
