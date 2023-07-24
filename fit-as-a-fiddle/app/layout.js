@@ -1,5 +1,6 @@
 import './globals.css'
 import { Lato } from 'next/font/google'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const lato = Lato({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] })
 
