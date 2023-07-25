@@ -1,10 +1,18 @@
-.main {
-    align-items: center;
-    justify-content: center;
+.hero {
+    display: flex-column;
+    text-align: center;
+    background-image: url(/images/pills-xaxis-bg-teal.jpeg);
+    background-size: cover;
+    height: 400px;
+    background-color: #EFF2F1;
+    padding: 80px;
 }
 
-.hero {
-    background-image: url(/images/pills-left-blue-bg.jpeg);
-    background-size: cover;
-    background-color: #EFF2F1;
+.hero h1 {
+    font-size: 8rem;
+    font-weight: 800;
+}
+
+.hero h2 {
+ padding: 20px;
 }
