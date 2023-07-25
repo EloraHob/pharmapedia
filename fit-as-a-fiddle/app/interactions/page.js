@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import Header from '../components/headers/Header';
+import Header from '../components/Header';
 import MedicationCardContainer from './components/med-card/MedicationCardContainer';
 
 export default function Interactions() {
