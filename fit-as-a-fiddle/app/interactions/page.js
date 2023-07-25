@@ -1,12 +1,12 @@
-import styles from './page.module.css'
+import styles from './page.module.css';
 
 export default function Interactions() {
   return (
-    // This is just a test. 
     <main className={styles.main}>
-     <div>
-        <p>Hello!</p>
-     </div>
+      <div className={`container-fluid text-center ${styles.hero}`}>
+        <h1>Drug Interaction Checker</h1>
+        <h2>Improve your safety and awareness by checking for possible conflicts between your medications.</h2>
+      </div>
     </main>
   )
 }

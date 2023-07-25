@@ -12,7 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* the navbar component goes here! */}
       <body className={lato.className}>{children}</body>
+      {/* the footer component goes here! */}
     </html>
   )
 }
