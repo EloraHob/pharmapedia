@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageHeader = ({ bgImage, title, subheader, className }) => {
+export default function PageHeader({ bgImage, title, subheader, className }) {
     const headerStyles = {
         backgroundImage: bgImage ? `url(${bgImage})` : 'radial-gradient(circle, #1C68A6, #6A9AC4)',
     };
@@ -12,5 +12,3 @@ const PageHeader = ({ bgImage, title, subheader, className }) => {
         </header>
     );
 }
-
-export default PageHeader;
