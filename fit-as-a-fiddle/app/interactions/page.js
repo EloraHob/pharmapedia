@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Header from '../components/headers/Header';
-import MedicationCardContainer from './components/med-card/MedicationCardContainer';
+import MedSelectionSection from './components/med-selection-section/MedSelectionSection';
 
 export default function Interactions() {
   return (
@@ -11,9 +11,7 @@ export default function Interactions() {
         subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
         className={styles.header}
       />
-      <MedicationCardContainer
-        medication="Test"
-      />
+      <MedSelectionSection text="Test" />
     </main>
   )
 }

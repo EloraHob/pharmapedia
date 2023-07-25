@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import MedicationCard from './MedicationCard';
+import MedicationCard from './med-card/MedicationCard';
 
 /*
   This is a client component for the MedicationCard component. 
@@ -10,16 +10,16 @@ import MedicationCard from './MedicationCard';
   All children of client components become part of this client bundle.
   See Next.js App Router docs for more info.
 */
-const MedicationCardContainer = ({ medication }) => {
+export default function SelectedMedsContainer({ medication }) {
   const [isDeleted, setIsDeleted] = useState(false);
 
   return (
-    <MedicationCard
-      medication={medication}
-      isDeleted={isDeleted}
-      onDelete={() => setIsDeleted(true)}
-    />
+    <div>
+      <MedicationCard
+        medication={medication}
+        isDeleted={isDeleted}
+        onDelete={() => setIsDeleted(true)}
+      />
+    </div>
   );
 };
-
-export default MedicationCardContainer;
