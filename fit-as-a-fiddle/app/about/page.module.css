@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+    font: Lato;
+  }
+
+.teamMembers {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+.member {
+    text-align: center;
+    max-width: 500px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img { 
+    width: 250px; 
+    height: 250px;
+    border-radius: 50%;
+}
+
+.p {
+    color: #242424;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.h1 {
+    color: #1c68a6;
+    text-align: center;
+}
+

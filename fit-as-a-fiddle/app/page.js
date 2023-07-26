@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -9,6 +10,16 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.js</code>
         </p>
+
+      <div>
+        <Link href="/about">
+          <h2>
+            About <span>-&gt;</span>
+          </h2>
+          <p>Go here to test the about page!</p>
+        </Link>
+      </div>
+
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
