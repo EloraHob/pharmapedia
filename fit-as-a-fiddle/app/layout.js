@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MyNavbar from './navbar';
+import MyFooter from './footer';
 import { ModalBody } from 'react-bootstrap';
 
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
       <MyNavbar />
       {children}
+      <MyFooter />
       </body>
     </html>
   )
