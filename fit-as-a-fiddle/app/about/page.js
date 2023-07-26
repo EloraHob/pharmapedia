@@ -32,6 +32,9 @@ export default function about() {
 
     return (
         <main className={styles.main}>
+            <div className={styles.header}>
+                <p className={styles.title}>About Page</p>
+            </div>
             <div className="container">
                 <h1 className={styles.h1}>Our Purpose</h1>
                 <p className={styles.p}>
