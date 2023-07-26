@@ -1,10 +1,24 @@
+'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
 import Link from 'next/link'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
+
   return (
     <main className={styles.main}>
+      <div className={styles.header}>
+        <h1 class="hero__title">8 reasons patients don't take their medications</h1>
+        <p class="hero__subtitle">"Medication nonadherence—when patients don’t take their medications as prescribed—is unfortunately fairly common, with research showing that patients don’t take their medications as prescribed about half the time. The phenomenon has added consequences for patients with chronic disease."</p>
+        <div class="buttons_AeoN">
+          <a class="button button--primary button--lg" href="https://www.ama-assn.org/delivering-care/patient-support-advocacy/8-reasons-patients-dont-take-their-medications">Learn More</a>
+        </div>
+      </div>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
