@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MyNavbar from './navbar';
 import MyFooter from './footer';
-import { ModalBody } from 'react-bootstrap';
 
 const lato = Lato({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] })
 
