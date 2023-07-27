@@ -4,7 +4,7 @@ import MedicationCardContainer from './components/med-card/MedicationCardContain
 
 export default function Interactions() {
   return (
-    <main>
+    <main className={styles.main}>
       <Header
         bgImage="/images/pills-xaxis-bg-teal.jpeg"
         title="Drug Interaction Checker"
