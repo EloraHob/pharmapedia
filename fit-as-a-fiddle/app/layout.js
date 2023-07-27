@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from './navbar';
 import MyFooter from './footer';
 
-const lato = Lato({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] })
+const lato = Lato({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] });
 
 export const metadata = {
   title: 'Pharmapedia',
