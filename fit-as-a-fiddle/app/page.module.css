@@ -27,6 +27,11 @@
   margin-bottom: 1rem;
 }
 
+.card h2 {
+  font-weight: 400;
+  margin-bottom: 0.7rem;
+}
+
 .banner p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
