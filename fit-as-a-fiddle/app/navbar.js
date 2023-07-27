@@ -17,7 +17,7 @@ const MyNavbar = () => {
             <NavDropdown.Divider />
             <NavDropdown.Item href="#">Search</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#">Interaction checker</NavDropdown.Item>
+            <NavDropdown.Item href="/interactions">Interaction checker</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/about" className="me-4" active>About</Nav.Link>
         </Nav>
