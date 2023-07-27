@@ -22,7 +22,7 @@ export default function Home() {
       <main>
         <section className={styles.banner}>
           <div className={styles.article}>
-            <h1>8 reasons patients don't take their medications</h1>
+            <h1>8 reasons patients don&apos;t take their medications</h1>
             <h2>Fear, Mistrust, Worry, Misunderstanding, Too Many Medications...</h2>
             <p>
             &quot;Medication nonadherence—when patients don&apos;t take their medications as prescribed—is unfortunately fairly common, with research showing that patients don&apos;t take their medications as prescribed about half the time. The phenomenon has added consequences for patients with chronic disease.&quot;
