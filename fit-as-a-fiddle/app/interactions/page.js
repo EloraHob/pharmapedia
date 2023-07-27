@@ -1,12 +1,15 @@
-import styles from './page.module.css'
+import styles from './page.module.css';
+import Header from '../components/headers/Header';
 
 export default function Interactions() {
   return (
-    // This is just a test. 
     <main className={styles.main}>
-     <div>
-        <p>Hello!</p>
-     </div>
+      <Header
+        bgImage="/images/pills-xaxis-bg-teal.jpeg"
+        title="Drug Interaction Checker"
+        subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
+        className={styles.header}
+      />
     </main>
   )
 }
