@@ -1,6 +1,11 @@
-import './globals.css';
-import { Lato } from 'next/font/google';
+import './globals.css'
+import { Lato } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import MyNavbar from './navbar';
+import MyFooter from './footer';
+import { ModalBody } from 'react-bootstrap';
+
 
 const lato = Lato({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] });
 
@@ -13,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={lato.className}>
-        {/* the navbar component actually goes here! */}
-        {children}
-        {/* the footer component actually goes here! */}
+      <MyNavbar />
+      {children}
+      <MyFooter />
       </body>
     </html>
   )
