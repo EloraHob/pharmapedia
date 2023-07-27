@@ -32,7 +32,7 @@ const MedicationCardContainer = ({ medication }) => {
   return (
     <section>
       <InformationText text="Add two or more medications below to check for interactions." />
-      <Container className="border border-primary rounded mt-2 mb-5">
+      <Container className="border border-primary rounded mt-2 mb-5 p-4">
         <SearchBar
           placeholder="Enter a drug name"
           ButtonIcon={FaPlus}

@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Container } from "react-bootstrap";
+import styles from "./ResultsSection.module.css";
+import { PiWarningBold } from "react-icons/pi";
 
 /*
   This is a client component for the MedicationCard component. 
@@ -12,17 +14,34 @@ import { Container } from "react-bootstrap";
 */
 
 const ResultsHeader = () => (
-  <div className="p-2">
-    <h2>Interaction Results</h2>
+  <div className={"p-2"}>
+    <h2 className={styles.heading}>Interaction Results</h2>
   </div>
 );
+
+const Disclaimer = ({ bold, message }) => {
+  return (
+    <div className={styles.disclaimer}>
+      <div>
+        <PiWarningBold size={80} className={styles.icon} />
+      </div>
+      <div className={styles.message}>
+        <strong>{bold}</strong>
+        <p>{message}</p>
+      </div>
+    </div>
+  );
+};
 
 const ResultsSection = () => {
   return (
     <section className="m-4">
-      <Container className="border border-primary rounded mt-2 mb-5">
+      <Container className={styles.container}>
         <ResultsHeader />
-        <p>Test!</p>
+        <Disclaimer
+          bold="No interactions were found. "
+          message="However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."
+        />
       </Container>
     </section>
   );
