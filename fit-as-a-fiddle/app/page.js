@@ -25,7 +25,7 @@ export default function Home() {
             <h1>8 reasons patients don't take their medications</h1>
             <h2>Fear, Mistrust, Worry, Misunderstanding, Too Many Medications...</h2>
             <p>
-            "Medication nonadherence—when patients don’t take their medications as prescribed—is unfortunately fairly common, with research showing that patients don’t take their medications as prescribed about half the time. The phenomenon has added consequences for patients with chronic disease."
+            &quot;Medication nonadherence—when patients don&apos;t take their medications as prescribed—is unfortunately fairly common, with research showing that patients don&apos;t take their medications as prescribed about half the time. The phenomenon has added consequences for patients with chronic disease.&quot;
             </p>
             <a
               href="https://www.ama-assn.org/delivering-care/patient-support-advocacy/8-reasons-patients-dont-take-their-medications"
