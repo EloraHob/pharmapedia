@@ -11,7 +11,7 @@ const MyNavbar = () => {
       <Navbar.Toggle aria-controls="navbarSupportedContent" />
       <Navbar.Collapse id="navbarSupportedContent">
         <Nav className="me-auto">
-          <Nav.Link href="#" className="ms-3 me-4" active>Home</Nav.Link>
+          <Nav.Link href="/" className="ms-3 me-4" active>Home</Nav.Link>
           <NavDropdown title="Features" id="navbarDropdown" className="me-4">
             <NavDropdown.Item href="#">Medication Information Filter</NavDropdown.Item>
             <NavDropdown.Divider />
