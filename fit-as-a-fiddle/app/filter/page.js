@@ -63,7 +63,7 @@ export default function Filter() {
     return (
         <main className={styles.main}>
             <Header
-                bgImage="/images/pills-xaxis-bg-teal.jpeg"
+                bgImage="/images/filter-header.jpg"
                 title="Basic Medication Info"
                 subheader="Experiment with different filters to discover different medications!"
                 className={styles.header}
