@@ -1,0 +1,42 @@
+.container {
+    position: relative;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .heading {
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    background-color: #fff;
+    padding: 0 5px;
+    z-index: 1;
+    color: blue;
+    font-weight: 700;
+    font-size: 25px;
+  }
+
+  .disclaimer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .disclaimer p {
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .disclaimer strong {
+    font-size: 20px;
+
+  }
+
+  .icon {
+    color: #FA8B27;
+    margin-right: 30px;
+  }

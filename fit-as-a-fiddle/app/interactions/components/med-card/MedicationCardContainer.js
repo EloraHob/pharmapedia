@@ -22,24 +22,31 @@ const CheckInteractionsButton = () => (
   </Row>
 );
 
+const InformationText = ({ text }) => (
+  <p className='mt-4 text-center'>{text}</p>
+);
+
 const MedicationCardContainer = ({ medication }) => {
   const [isDeleted, setIsDeleted] = useState(false);
 
   return (
-    <Container className="border border-primary rounded mt-5">
-      <SearchBar
-        placeholder="Enter a drug name"
-        ButtonIcon={FaPlus}
-      />
-      
-      <MedicationCard
-        medication={medication}
-        isDeleted={isDeleted}
-        onDelete={() => setIsDeleted(true)}
-      />
+    <section>
+      <InformationText text="Add two or more medications below to check for interactions." />
+      <Container className="border border-primary rounded mt-2 mb-5 p-4">
+        <SearchBar
+          placeholder="Enter a drug name"
+          ButtonIcon={FaPlus}
+        />
 
-      <CheckInteractionsButton />
-    </Container>
+        <MedicationCard
+          medication={medication}
+          isDeleted={isDeleted}
+          onDelete={() => setIsDeleted(true)}
+        />
+
+        <CheckInteractionsButton />
+      </Container>
+    </section>
   );
 };
 
