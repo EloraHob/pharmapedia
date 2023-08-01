@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./ResultsSection.module.css";
 import { PiWarningBold } from "react-icons/pi";
@@ -43,24 +43,32 @@ const Liability = ({ bold }) => {
 };
 
 const ResultsSection = () => {
-  return (
-    <section className="m-4">
-      <Container className={styles.container}>
-        <ResultsHeader />
-        {/* TODO: 
-          IF results = null
-            (display disclaimer message)
-          ELSE 
-            (display liability message)
-            (display results)
-        */}
-        <Liability
-          bold="In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."
-        />
+  const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
+  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
+
+  let content;
+  if (!firstLoad) {
+    if (apiResults === null) {
+      content = (
         <Disclaimer
           bold="No interactions were found."
           message="However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."
         />
+      );
+    } else {
+      content = (
+        <Liability
+          bold="In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."
+        />
+      );
+    }
+  }
+
+  return (
+    <section className="m-4">
+      <Container className={styles.container}>
+        <ResultsHeader />
+        {content}
       </Container>
     </section>
   );
