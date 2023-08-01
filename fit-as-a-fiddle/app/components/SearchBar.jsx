@@ -13,7 +13,7 @@ const SearchBar = ({ placeholder, ButtonIcon }) => (
   <Container>
     <Row className="justify-content-center">
       <Col xs={6} md={4}>
-        <Form inline>
+        <Form inline="true">
           <InputGroup>
             <FormControl
               type="text"

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./ResultsSection.module.css";
 import { PiWarningBold } from "react-icons/pi";
+import SampleDataPage from "./interaction-results/TEST_DATA";
 
 /*
   This is a client component for the MedicationCard component. 
@@ -19,47 +20,45 @@ const ResultsHeader = () => (
   </div>
 );
 
-const Disclaimer = ({ bold, message }) => {
+const Disclaimer = () => {
   return (
     <div className={styles.disclaimer}>
       <div>
         <PiWarningBold size={80} className={styles.icon} />
       </div>
       <div className={styles.message}>
-        <strong>{bold}</strong>
-        <p>{message}</p>
+        <strong>No interactions were found.</strong>
+        <p>However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance.</p>
       </div>
     </div>
   );
 };
 
-const Liability = ({ bold }) => {
+const Liability = () => {
   return (
     <div className={styles.liability}>
         <PiWarningBold size={30} className={styles.icon} />
-        <strong>{bold}</strong>
+        <strong>In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction.</strong>
     </div>
   );
 };
 
 const ResultsSection = () => {
   const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
-  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
+  const [firstLoad, setFirstLoad] = useState(false); // hide both messages on first load
 
   let content;
   if (!firstLoad) {
     if (apiResults === null) {
       content = (
-        <Disclaimer
-          bold="No interactions were found."
-          message="However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."
-        />
+        <Disclaimer />
       );
     } else {
       content = (
-        <Liability
-          bold="In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."
-        />
+        <>
+          <Liability />
+          <SampleDataPage />
+        </>
       );
     }
   }

@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.interaction {
+    display: flex;
+    justify-content: space-between;
+    max-width: 60vw;
+}
+
+.interaction h3 {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.icon {
+    margin: 0px 100px;
+    color: red;
+}
+
+.description {
+    max-width: 40vw;
+    font-size: 20px;
+}
