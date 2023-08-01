@@ -19,25 +19,25 @@ const ResultsHeader = () => (
   </div>
 );
 
-const Disclaimer = ({ bold, message }) => {
+const Disclaimer = () => {
   return (
     <div className={styles.disclaimer}>
       <div>
         <PiWarningBold size={80} className={styles.icon} />
       </div>
       <div className={styles.message}>
-        <strong>{bold}</strong>
-        <p>{message}</p>
+        <strong>"No interactions were found."</strong>
+        <p>"However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."</p>
       </div>
     </div>
   );
 };
 
-const Liability = ({ bold }) => {
+const Liability = () => {
   return (
     <div className={styles.liability}>
         <PiWarningBold size={30} className={styles.icon} />
-        <strong>{bold}</strong>
+        <strong>"In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."</strong>
     </div>
   );
 };
@@ -50,16 +50,11 @@ const ResultsSection = () => {
   if (!firstLoad) {
     if (apiResults === null) {
       content = (
-        <Disclaimer
-          bold="No interactions were found."
-          message="However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."
-        />
+        <Disclaimer />
       );
     } else {
       content = (
-        <Liability
-          bold="In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."
-        />
+        <Liability />
       );
     }
   }

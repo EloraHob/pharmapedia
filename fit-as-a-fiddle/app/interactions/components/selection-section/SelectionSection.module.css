@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 20px;
+  min-height: 12rem;
+  margin: 25px auto 50px;
+}
+
+.search {
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 900px;
+}
+
+.checkInteractionsButton {
+  position: absolute;
+  bottom: -35px;
+  right: 30px;
+}
+

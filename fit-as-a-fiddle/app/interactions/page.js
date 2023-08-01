@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Header from '../components/Header';
-import MedicationCardContainer from './components/med-card/MedicationCardContainer';
+import SelectionSection from './components/selection-section/SelectionSection';
 import ResultsSection from './components/results-section/ResultsSection';
 
 export default function Interactions() {
@@ -12,7 +12,7 @@ export default function Interactions() {
         subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
         className={styles.header}
       />
-      <MedicationCardContainer
+      <SelectionSection
         medication="Test"
       />
       <ResultsSection />
