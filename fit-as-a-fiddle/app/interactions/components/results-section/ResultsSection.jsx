@@ -33,13 +33,32 @@ const Disclaimer = ({ bold, message }) => {
   );
 };
 
+const Liability = ({ bold }) => {
+  return (
+    <div className={styles.liability}>
+        <PiWarningBold size={30} className={styles.icon} />
+        <strong>{bold}</strong>
+    </div>
+  );
+};
+
 const ResultsSection = () => {
   return (
     <section className="m-4">
       <Container className={styles.container}>
         <ResultsHeader />
+        {/* TODO: 
+          IF results = null
+            (display disclaimer message)
+          ELSE 
+            (display liability message)
+            (display results)
+        */}
+        <Liability
+          bold="In order to ensure safe and appropriate management, talk to your healthcare practitioner if you believe you are experiencing, or may experience, a drug interaction."
+        />
         <Disclaimer
-          bold="No interactions were found. "
+          bold="No interactions were found."
           message="However, this does not necessarily mean no interactions exist. Always consult your healthcare provider for guidance."
         />
       </Container>
