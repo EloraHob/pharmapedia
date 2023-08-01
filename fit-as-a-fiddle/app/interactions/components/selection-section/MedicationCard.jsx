@@ -18,7 +18,7 @@ export default function MedicationCard({ medication }) {
         type="button"
         onClick={handleDelete}
       >
-        <MdDeleteForever size={50}/>
+        <MdDeleteForever size={30}/>
       </button>
     </div>
   );

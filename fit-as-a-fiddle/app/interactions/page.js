@@ -13,7 +13,7 @@ export default function Interactions() {
         className={styles.header}
       />
       <SelectionSection
-        medication="Test"
+        medication="Alprazolam"
       />
       <ResultsSection />
     </main>
