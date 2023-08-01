@@ -9,7 +9,6 @@ import {
   Col,
 } from "react-bootstrap";
 
-// TODO: Fix missing button icon (line 25)
 const SearchBar = ({ placeholder, ButtonIcon }) => (
   <Container>
     <Row className="justify-content-center">

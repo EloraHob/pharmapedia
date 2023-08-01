@@ -3,6 +3,7 @@
     border: 1px solid blue;
     border-radius: 5px;
     padding: 20px;
+    min-height: 12rem;
   }
   
   .heading {
@@ -14,29 +15,31 @@
     z-index: 1;
     color: blue;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 1.5rem;
   }
 
-  .disclaimer {
+  /* Stylings for disclaimer message & icon */
+  .disclaimer, .liability {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .disclaimer {
     padding: 30px;
     max-width: 900px;
     margin: 0 auto;
   }
 
-  .disclaimer p {
-    margin: 0;
-    max-width: 500px;
-  }
-
-  .disclaimer strong {
-    font-size: 20px;
-
-  }
-
   .icon {
     color: #FA8B27;
-    margin-right: 30px;
+    size: 30vh;
+    margin-right: 10px;
   }
+
+  /* Styling for liability message */
+  .liability {
+    padding: 10px;
+  }
+
+  
