@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import MedicationCard from './MedicationCard';
+import SelectedMeds from './SelectedMeds';
 import SearchBar from '@/app/components/SearchBar';
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import { FaPlus } from "react-icons/fa";
@@ -22,13 +22,13 @@ const InformationText = ({ text }) => (
 const CheckInteractionsButton = () => (
   <Row className={`justify-content-end mt-3 mb-3 ${styles.checkInteractionsButton}`}>
     <Col xs="auto">
-      <Button variant="primary" >Check Interactions</Button>
+      <Button variant="primary" onClick={"/* TRIGGER API CALL */"} >Check Interactions</Button>
     </Col>
   </Row>
 );
 
-const SelectionSection = ({ medication }) => {
-  const [isDeleted, setIsDeleted] = useState(false);
+const SelectionSection = ({ medicationData }) => {
+  const [isDeleted, setIsDeleted] = useState(false); // I have to make this a client component if I use useState(). HELP
 
   return (
     <section>
@@ -41,9 +41,8 @@ const SelectionSection = ({ medication }) => {
           />
         </div>
 
-        <MedicationCard
-          medication={medication}
-          isDeleted={isDeleted}
+        <SelectedMeds
+          medications={medicationData}
           onDelete={() => setIsDeleted(true)}
         />
 

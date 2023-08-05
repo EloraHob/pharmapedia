@@ -45,7 +45,7 @@ const Liability = () => {
 
 const ResultsSection = () => {
   const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
-  const [firstLoad, setFirstLoad] = useState(false); // hide both messages on first load
+  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
 
   let content;
   if (!firstLoad) {

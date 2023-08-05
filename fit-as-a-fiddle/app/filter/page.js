@@ -3,72 +3,86 @@
 import styles from './page.module.css';
 import Header from '../components/Header';
 import ResultsDisplayGrid from './ResultsDisplayGrid';
+import FilterSection from './FilterSection';
+import FilterSearch from './FilterSearch';
+import { FaSearch } from 'react-icons/fa';
+
+/* 
+    WE MAY NEED TP USE openFDA API here.
+    API KEY: 9Coj99auGenhBnKNdAQ5bOOAdFd8aGYSXcEKtAcV
+
+    Potential filter categories: 
+      DOSAGE_FORM: https://api.fda.gov/drug/drugsfda.json?search=products.dosage_form:{"term"} &limit=100     // double quotes indicates EXACT match
+      MARKETING_STATUS: https://api.fda.gov/drug/drugsfda.json?search=products.marketing_status:1 &limit=100
+
+      
+*/
 
 const medicationsData = [
-    [
-      { 
-        drugName: "Aspirin", 
-        activeIngredient: "Acetylsalicylic Acid", 
-        description: "Aspirin is a salicylate that is used to treat pain, and reduce fever or inflammation."
-      },
-      { 
-        drugName: "Tylenol", 
-        activeIngredient: "Acetaminophen", 
-        description: "Tylenol is used to treat mild to moderate and pain, to treat moderate to severe pain in conjunction with opiates, or to reduce fever." 
-      },
-      { 
-        drugName: "Advil", 
-        activeIngredient: "Ibuprofen", 
-        description: "Advil is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body." 
-      },
-    ],
-    [
-      { 
-        drugName: "Zyrtec", 
-        activeIngredient: "Cetirizine", 
-        description: "Zyrtec (Cetirizine) is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching." 
-      },
-      { 
-        drugName: "Claritin", 
-        activeIngredient: "Loratadine", 
-        description: "Claritin (Loratadine) is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, and sneezing." 
-      },
-      { 
-        drugName: "Allegra", 
-        activeIngredient: "Fexofenadine", 
-        description: "Allegra (Fexofenadine) is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching." 
-      },
-    ],
-    [
-      { 
-        drugName: "Nexium", 
-        activeIngredient: "Esomeprazole", 
-        description: "Nexium (Esomeprazole) is a proton pump inhibitor that decreases the amount of acid produced in the stomach." 
-      },
-      { 
-        drugName: "Prilosec", 
-        activeIngredient: "Omeprazole", 
-        description: "Prilosec (Omeprazole) is a proton pump inhibitor that decreases the amount of acid produced in the stomach." 
-      },
-      { 
-        drugName: "Prevacid", 
-        activeIngredient: "Lansoprazole", 
-        description: "Prevacid (Lansoprazole) is a proton pump inhibitor that decreases the amount of acid produced in the stomach." 
-      },
-    ],
-  ];
-  
+  [
+    {
+      drugName: "Aspirin",
+      activeIngredient: "Acetylsalicylic Acid",
+    },
+    {
+      drugName: "Tylenol",
+      activeIngredient: "Acetaminophen",
+    },
+    {
+      drugName: "Advil",
+      activeIngredient: "Ibuprofen",
+    },
+  ],
+  [
+    {
+      drugName: "Zyrtec",
+      activeIngredient: "Cetirizine",
+    },
+    {
+      drugName: "Claritin",
+      activeIngredient: "Loratadine",
+    },
+    {
+      drugName: "Allegra",
+      activeIngredient: "Fexofenadine",
+    },
+  ],
+  [
+    {
+      drugName: "Nexium",
+      activeIngredient: "Esomeprazole",
+    },
+    {
+      drugName: "Prilosec",
+      activeIngredient: "Omeprazole",
+    },
+    {
+      drugName: "Prevacid",
+      activeIngredient: "Lansoprazole",
+    },
+  ],
+];
+
 
 export default function Filter() {
-    return (
-        <main className={styles.main}>
-            <Header
-                bgImage="/images/filter-header.jpg"
-                title="Basic Medication Info"
-                subheader="Experiment with different filters to discover different medications!"
-                className={styles.header}
-            />
-            <ResultsDisplayGrid medications={medicationsData} />
-        </main>
-    )
+  return (
+    <main className={styles.main}>
+      <Header
+        bgImage="/images/filter-header.jpg"
+        title="Basic Medication Info"
+        subheader="Experiment with different filters to discover different medications!"
+        className={styles.header}
+      />
+      <div className='d-flex'>
+        <FilterSection />
+        <div className="d-flex-column">
+          <FilterSearch
+            placeholder="enter a drug name"
+            ButtonIcon={FaSearch}
+          />
+          <ResultsDisplayGrid medications={medicationsData} />
+        </div>
+      </div>
+    </main>
+  )
 }

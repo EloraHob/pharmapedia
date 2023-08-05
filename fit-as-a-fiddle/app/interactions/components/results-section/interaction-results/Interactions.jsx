@@ -2,6 +2,7 @@ import React from 'react';
 import { TbArrowsExchange2 } from "react-icons/tb";
 import styles from './Interactions.module.css';
 
+// Renders single interaction result
 const Interaction = ({ interaction }) => {
   const [{ minConceptItem: name1 }, { minConceptItem: name2 }] =
     interaction.interactionConcept;
@@ -19,6 +20,7 @@ const Interaction = ({ interaction }) => {
   );
 };
 
+// Creates group of interaction results based on given data
 const InteractionGroup = ({ group }) => {
     return (
         <div>
@@ -30,6 +32,7 @@ const InteractionGroup = ({ group }) => {
         </div>
     );
 };
+
 
 const Interactions = ({ interactionData }) => {
     return (
