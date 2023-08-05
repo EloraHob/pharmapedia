@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./ResultsSection.module.css";
 import { PiWarningBold } from "react-icons/pi";
-import SampleDataPage from "./result/TEST_DATA";
+import SampleDataPage from "./interaction-results/TEST_DATA";
 
 /*
   This is a client component for the MedicationCard component. 
