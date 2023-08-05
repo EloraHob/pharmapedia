@@ -22,7 +22,7 @@ const InformationText = ({ text }) => (
 const CheckInteractionsButton = () => (
   <Row className={`justify-content-end mt-3 mb-3 ${styles.checkInteractionsButton}`}>
     <Col xs="auto">
-      <Button variant="primary" >Check Interactions</Button>
+      <Button variant="primary" onClick={"/* TRIGGER API CALL */"} >Check Interactions</Button>
     </Col>
   </Row>
 );
