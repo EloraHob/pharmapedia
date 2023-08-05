@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./ResultsSection.module.css";
 import { PiWarningBold } from "react-icons/pi";
-import SampleDataPage from "./interaction-results/TEST_DATA";
+import SampleDataPage from "./result/TEST_DATA";
 
 /*
   This is a client component for the MedicationCard component. 
@@ -45,7 +45,7 @@ const Liability = () => {
 
 const ResultsSection = () => {
   const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
-  const [firstLoad, setFirstLoad] = useState(false); // hide both messages on first load
+  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
 
   let content;
   if (!firstLoad) {
