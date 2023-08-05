@@ -1,64 +1,61 @@
 {
-    "drugData": [
-      {
-        "drugName": "simvastatin 40 MG Oral Tablet [Zocor]",
-        "rxcui": "152923"
-      },
-      {
-        "drugName": "fluconazole 50 MG Oral Tablet [Diflucan]",
-        "rxcui": "207106"
-      },
-      {
-        "drugName": "bosentan 125 MG Oral Tablet",
-        "rxcui": "656659"
-      }
-    ],
-    "interactionData": {
-      "fullInteractionTypeGroup": [
+  "drugData": [
+    {
+      "drugName": "simvastatin 40 MG Oral Tablet [Zocor]",
+      "rxcui": "152923"
+    },
+    {
+      "drugName": "fluconazole 50 MG Oral Tablet [Diflucan]",
+      "rxcui": "207106"
+    },
+    {
+      "drugName": "bosentan 125 MG Oral Tablet",
+      "rxcui": "656659"
+    }
+  ],
+  "fullInteractionTypeGroup": [
+    {
+      "sourceName": "DrugBank",
+      "fullInteractionType": [
         {
-          "sourceName": "DrugBank",
-          "fullInteractionType": [
+          "interactionPair": [
             {
-              "interactionPair": [
+              "interactionConcept": [
                 {
-                  "interactionConcept": [
-                    {
-                      "minConceptItem": {
-                        "name": "simvastatin"
-                      }
-                    },
-                    {
-                      "minConceptItem": {
-                        "name": "fluconazole"
-                      }
-                    }
-                  ],
-                  "description": "The metabolism of Simvastatin can be decreased when combined with Fluconazole."
+                  "minConceptItem": {
+                    "name": "simvastatin"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "name": "fluconazole"
+                  }
                 }
-              ]
-            },
+              ],
+              "description": "The metabolism of Simvastatin can be decreased when combined with Fluconazole."
+            }
+          ]
+        },
+        {
+          "interactionPair": [
             {
-              "interactionPair": [
+              "interactionConcept": [
                 {
-                  "interactionConcept": [
-                    {
-                      "minConceptItem": {
-                        "name": "simvastatin"
-                      }
-                    },
-                    {
-                      "minConceptItem": {
-                        "name": "bosentan"
-                      }
-                    }
-                  ],
-                  "description": "The serum concentration of Simvastatin can be decreased when it is combined with Bosentan."
+                  "minConceptItem": {
+                    "name": "simvastatin"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "name": "bosentan"
+                  }
                 }
-              ]
+              ],
+              "description": "The serum concentration of Simvastatin can be decreased when it is combined with Bosentan."
             }
           ]
         }
       ]
     }
-  }
-  
+  ]
+}

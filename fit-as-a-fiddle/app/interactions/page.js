@@ -6,7 +6,7 @@ import ResultsSection from './components/results-section/ResultsSection';
 import jsonData from './TEST_DATA.json'; 
 
 const drugName = jsonData.drugData; // Test data containing 3 medications
-const interactionData = jsonData.interactionData; // Test data containing 3 interactions
+const interactionData = jsonData.fullInteractionTypeGroup; // Test data containing 3 interactions
 
 // ALL API CALLS NEED TO HAPPEN HERE
 
@@ -31,7 +31,9 @@ export default function Interactions() {
       <SelectionSection
         medicationData={drugName}
       />
-      <ResultsSection />
+      <ResultsSection 
+        interactionData={interactionData}
+      />
     </main>
   )
 };

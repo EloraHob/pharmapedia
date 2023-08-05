@@ -37,7 +37,7 @@ const InteractionGroup = ({ group }) => {
 const Interactions = ({ interactionData }) => {
     return (
         <div>
-            {interactionData.fullInteractionTypeGroup.map((group, index) => (
+            {interactionData.map((group, index) => (
                 <InteractionGroup key={index} group={group} />
             ))}
         </div>

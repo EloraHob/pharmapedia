@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./ResultsSection.module.css";
 import { PiWarningBold } from "react-icons/pi";
-import SampleDataPage from "./interaction-results/TEST_DATA";
+import Interactions from "./Interactions";
 
 /*
   This is a client component for the MedicationCard component. 
@@ -43,31 +43,15 @@ const Liability = () => {
   );
 };
 
-const ResultsSection = () => {
-  const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
-  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
-
-  let content;
-  if (!firstLoad) {
-    if (apiResults === null) {
-      content = (
-        <Disclaimer />
-      );
-    } else {
-      content = (
-        <>
-          <Liability />
-          <SampleDataPage />
-        </>
-      );
-    }
-  }
+const ResultsSection = ({interactionData}) => {
 
   return (
     <section className="m-4">
       <Container className={styles.container}>
         <ResultsHeader />
-        {content}
+        <Disclaimer />
+        <Liability />
+        <Interactions interactionData={interactionData} />
       </Container>
     </section>
   );
