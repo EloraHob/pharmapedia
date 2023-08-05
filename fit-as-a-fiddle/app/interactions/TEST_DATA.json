@@ -23,11 +23,13 @@
               "interactionConcept": [
                 {
                   "minConceptItem": {
+                    "rxcui": "152923",
                     "name": "simvastatin"
                   }
                 },
                 {
                   "minConceptItem": {
+                    "rxcui": "207106",
                     "name": "fluconazole"
                   }
                 }
@@ -42,16 +44,39 @@
               "interactionConcept": [
                 {
                   "minConceptItem": {
+                    "rxcui": "152923",
                     "name": "simvastatin"
                   }
                 },
                 {
                   "minConceptItem": {
+                    "rxcui": "656659",
                     "name": "bosentan"
                   }
                 }
               ],
               "description": "The serum concentration of Simvastatin can be decreased when it is combined with Bosentan."
+            }
+          ]
+        },
+        {
+          "interactionPair": [
+            {
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "rxcui": "207106",
+                    "name": "fluconazole"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "rxcui": "656659",
+                    "name": "bosentan"
+                  }
+                }
+              ],
+              "description": "The metabolism of Bosentan can be decreased when combined with Fluconazole."
             }
           ]
         }
