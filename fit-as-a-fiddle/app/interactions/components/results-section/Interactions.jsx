@@ -23,7 +23,7 @@ const Interaction = ({ interaction }) => {
 const Interactions = ({ interactionData }) => {
   return (
     <div>
-      {interactionData.flatMap((group) =>
+      {interactionData?.flatMap((group) =>
         group.fullInteractionType.flatMap((interactionType) =>
           interactionType.interactionPair.map((interaction) => (
             <Interaction 
