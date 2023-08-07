@@ -21,10 +21,6 @@ import FilterSearch from './FilterSearch';
 
 export default function Filter() {
   const [searchResults, setSearchResults] = useState([]);
-    
-  useEffect(() => {
-    console.log('Search results updated in parent:', searchResults);
-  }, [searchResults]);
   
   return (
     <main className={styles.main}>

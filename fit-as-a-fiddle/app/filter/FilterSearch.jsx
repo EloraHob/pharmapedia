@@ -43,8 +43,6 @@ const SearchBar = ({ placeholder, setResults }) => {
           )
           .flat();
         setResults(formattedResults);
-        console.log('from the searchbar:', JSON.stringify(formattedResults, null, 2));
-
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
