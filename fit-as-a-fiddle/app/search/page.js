@@ -3,24 +3,27 @@
 import styles from './page.module.css';
 import Header from '../components/Header';
 import SearchSection from './search';
-import ResultsDisplayGrid from './components/search-bar/ResultsDisplayGrid';
+import ResultsDisplayGrid from './ResultsDisplayGrid';
 
 const medicationsData = [
   [
     {
       drugName: "Aspirin",
       activeIngredient: "Acetylsalicylic Acid",
-      description: "Aspirin is a salicylate that is used to treat pain, and reduce fever or inflammation."
+      description: "Aspirin is a salicylate that is used to treat pain, and reduce fever or inflammation.",
+      rxcui: 252857
     },
     {
       drugName: "Tylenol",
       activeIngredient: "Acetaminophen",
-      description: "Tylenol is used to treat mild to moderate and pain, to treat moderate to severe pain in conjunction with opiates, or to reduce fever."
+      description: "Tylenol is used to treat mild to moderate and pain, to treat moderate to severe pain in conjunction with opiates, or to reduce fever.",
+      rxcui: 198440
     },
     {
       drugName: "Advil",
       activeIngredient: "Ibuprofen",
-      description: "Advil is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body."
+      description: "Advil is a nonsteroidal anti-inflammatory drug (NSAID). It works by reducing hormones that cause inflammation and pain in the body.",
+      rxcui: 310964
     },
   ],
   [
