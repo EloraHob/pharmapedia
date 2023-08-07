@@ -2,9 +2,8 @@
 
 import styles from './page.module.css';
 import Header from '../components/Header';
-import SearchBar from './components/search-bar/search';
+import SearchSection from './search';
 import ResultsDisplayGrid from './components/search-bar/ResultsDisplayGrid';
-// import results from './components/results';
 
 const medicationsData = [
   [
@@ -69,7 +68,7 @@ export default function Interactions() {
         subheader="Search for information about a specific medication"
         className={styles.header}
       />
-      <SearchBar/>
+      <SearchSection/>
       <ResultsDisplayGrid medications={medicationsData} />
     </main>
   )
