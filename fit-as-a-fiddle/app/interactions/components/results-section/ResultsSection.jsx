@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Container } from "react-bootstrap";
-import styles from "./ResultsSection.module.css";
-import { PiWarningBold } from "react-icons/pi";
-import Interactions from "./Interactions";
-import { useSearchParams } from "next/navigation";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { PiWarningBold } from 'react-icons/pi';
+import styles from './ResultsSection.module.css';
+import Interactions from './Interactions';
+import { useSearchParams } from 'next/navigation';
 
 /*
   This is a client component for the MedicationCard component. 
@@ -46,26 +46,22 @@ const Liability = () => {
 
 const ResultsSection = () => {
   const searchParams = useSearchParams();
- 
-  const APIparam = searchParams.get('selectedList') || ['12345'] ;
-
+  const APIparam = searchParams.get('selectedList');
   const interactions = ( rxcuiList ) => { 
     fetch(`https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=${rxcuiList}&sources=DrugBank`)
       .then((response, error) => {
         return response.json();
       })
   };
-
- 
   const result = interactions(APIparam);
-  console.log(result);
 
+  console.log(result);
   return (
     <section className="m-4">
       <Container className={styles.container}>
         <ResultsHeader />
         <Disclaimer />
-        <Liability />
+        {/* <Liability />   <-- render ONLY IF there ARE interactions */}
         <Interactions interactionData={result} />
       </Container>
     </section>

@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
-import SelectedMeds from "./SelectedMeds";
-import SearchBar from "@/app/components/SearchBar";
-import { Container, Button, Row, Col } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
-import styles from "./SelectionSection.module.css";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import React, { useState, useCallback } from 'react';
+import SelectedMeds from './SelectedMeds';
+import SearchBar from '@/app/components/SearchBar';
+import { Container, Button, Row, Col } from 'react-bootstrap';
+import { FaPlus } from 'react-icons/fa';
+import styles from './SelectionSection.module.css';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 // Test data
 const TEST_DATA = [

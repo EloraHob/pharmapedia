@@ -37,20 +37,9 @@ const interactionData = jsonData.interactionData;
 
 */
 
-/* Results section API call:
-  https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106+152923+656659
-
-  Service domain: https://rxnav.nlm.nih.gov
-  HTTP request: GET  /REST/interaction/list.xml?rxcuis=rxcuis&sources=sources
-
-  request: https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={['+' separated list of rxcuis in test 'drugData' array (or user-generated selectedMeds array)]}&sources=DrugBank  
-
-    
-*/
 export const dynamic = 'force-dynamic'
 
-
-// ASYNC CAN'T BE USED ON CLIENT FUNCTIONS HELPPPP
+// Renders Interactions page
 export default function Interactions({ params, searchParams }) {
   return (
     <main className={styles.main}>
