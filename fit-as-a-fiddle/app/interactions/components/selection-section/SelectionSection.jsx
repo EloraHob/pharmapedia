@@ -31,7 +31,6 @@ const InformationText = () => (
 
 // Renders content for the medication selection section of the Interactions page.
 const SelectionSection = () => {
-  const [isDeleted, setIsDeleted] = useState(false);
   const [selectedMedCards, setSelectedMedCards] = useState(selectedCards);
 
   // Prepares list of selectedMedCards for Interaction API request.
@@ -44,9 +43,9 @@ const SelectionSection = () => {
   };
 
   // I don't think this is right. Just wanna toggle the deletion of the card.
-const handleDeleteCard = (index) => {
-
-};
+  const handleDeleteCard = (index) => {
+    setSelectedMedCards(selectedMedCards.filter((_, i) => i !== index));
+  };
 
   // TODO: modify so api call is triggered on click
   // should this be in its own .jsx file as a separate component?
@@ -72,7 +71,7 @@ const handleDeleteCard = (index) => {
         </div>
 
         <SelectedMeds
-          selectedCards={selectedCards}
+          selectedCards={selectedMedCards}
           onDelete={handleDeleteCard}
         />
 
