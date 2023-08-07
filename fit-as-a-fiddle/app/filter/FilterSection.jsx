@@ -22,9 +22,7 @@ const filterOptions = [
     options: [
       "Oral",
       "Topical",
-      "Intramuscular (injection)",
-      "Subcutaneous (injection)",
-      "Vaginal",
+      "Injection",
       "Nasal",
       "Otic (ear)",
     ],
