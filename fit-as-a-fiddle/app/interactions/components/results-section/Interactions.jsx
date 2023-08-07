@@ -21,27 +21,18 @@ const Interaction = ({ interaction }) => {
 };
 
 // Creates group of interaction results based on given data
-const InteractionGroup = ({ group }) => {
-    return (
-        <div>
-            {group.fullInteractionType.map((interactionType) => (
-                interactionType.interactionPair.map((interaction, index) => (
-                    <Interaction key={index} interaction={interaction} />
-                ))
-            ))}
-        </div>
-    );
-};
-
-
 const Interactions = ({ interactionData }) => {
-    return (
-        <div>
-            {interactionData.fullInteractionTypeGroup.map((group, index) => (
-                <InteractionGroup key={index} group={group} />
-            ))}
-        </div>
-    );
+  return (
+    <div>
+      {interactionData.flatMap((group) =>
+        group.fullInteractionType.flatMap((interactionType) =>
+          interactionType.interactionPair.map((interaction, index) => (
+            <Interaction key={index} interaction={interaction} />
+          ))
+        )
+      )}
+    </div>
+  );
 };
 
 export default Interactions;
