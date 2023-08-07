@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './search.module.css';
 import MedicationSearch from './MedicationSearch';
-import MedicationInfoCard from './MedicationInfoCard';
+import MedicationInfoCard from '../filter/MedicationInfoCard';
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
