@@ -1,0 +1,36 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* Increase padding for more height */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%; /* Adjust width to take up more than half of the page */
+  max-width: 600px; /* Add max-width to limit width on larger screens */
+}
+
+.icon {
+  padding: 8px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.button {
+  padding: 8px 12px;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
