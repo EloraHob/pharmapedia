@@ -2,23 +2,8 @@ import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import styles from "./SelectedMeds.module.css";
 
-// Renders list of medication cards based on given input
-const MedicationCards = ({ onDelete }) => {
-  const selectedCards = [
-    {
-      drugName: "simvastatin 40 MG Oral Tablet [Zocor]",
-      rxcui: "152923",
-    },
-    {
-      drugName: "fluconazole 50 MG Oral Tablet [Diflucan]",
-      rxcui: "207106",
-    },
-    {
-      drugName: "bosentan 125 MG Oral Tablet",
-      rxcui: "656659",
-    },
-  ];
-
+// Renders list of medication cards based on provided input
+const MedicationCards = ({ selectedCards, onDelete }) => {
   // Individual med card
   const renderCard = (medication, index) => (
     <div className={styles.card} key={medication.rxcui}>
@@ -33,7 +18,7 @@ const MedicationCards = ({ onDelete }) => {
     </div>
   );
 
-  // List of selected med cards
+  // Return list of selected med cards
   return <div className={styles.medList}>{selectedCards.map(renderCard)}</div>;
 };
 
