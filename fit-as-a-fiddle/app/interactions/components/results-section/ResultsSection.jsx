@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import styles from "./ResultsSection.module.css";
-import { PiWarningBold } from "react-icons/pi";
-import SampleDataPage from "./interaction-results/TEST_DATA";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { PiWarningBold } from 'react-icons/pi';
+import styles from './ResultsSection.module.css';
+import Interactions from './Interactions';
+import { useSearchParams } from 'next/navigation';
 
 /*
   This is a client component for the MedicationCard component. 
@@ -44,30 +45,24 @@ const Liability = () => {
 };
 
 const ResultsSection = () => {
-  const [apiResults, setApiResults] = useState(null); // will use to conditionally render message based on API response
-  const [firstLoad, setFirstLoad] = useState(true); // hide both messages on first load
+  const searchParams = useSearchParams();
+  const APIparam = searchParams.get('selectedList');
+  const interactions = ( rxcuiList ) => { 
+    fetch(`https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=${rxcuiList}&sources=DrugBank`)
+      .then((response, error) => {
+        return response.json();
+      })
+  };
+  const result = interactions(APIparam);
 
-  let content;
-  if (!firstLoad) {
-    if (apiResults === null) {
-      content = (
-        <Disclaimer />
-      );
-    } else {
-      content = (
-        <>
-          <Liability />
-          <SampleDataPage />
-        </>
-      );
-    }
-  }
-
+  console.log(result);
   return (
     <section className="m-4">
       <Container className={styles.container}>
         <ResultsHeader />
-        {content}
+        <Disclaimer />
+        {/* <Liability />   <-- render ONLY IF there ARE interactions */}
+        <Interactions interactionData={result} />
       </Container>
     </section>
   );
