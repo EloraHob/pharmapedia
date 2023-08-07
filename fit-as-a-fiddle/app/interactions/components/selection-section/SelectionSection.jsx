@@ -15,6 +15,11 @@ import styles from "./SelectionSection.module.css";
   See Next.js App Router docs for more info.
 */
 
+// I don't think this is right. Just wanna toggle the deletion of the card. 
+const handleDeleteCard = (index) => {
+  selectedCards.remove(index);
+};
+
 const InformationText = ({ text }) => (
   <p className='mt-4 text-center'>{text}</p>
 );
@@ -43,7 +48,7 @@ const SelectionSection = () => {
         </div>
 
         <SelectedMeds
-          onDelete={() => setIsDeleted(true)}
+          onDelete={() => setIsDeleted(true)} // Is this even needed?
         />
 
         <CheckInteractionsButton />
