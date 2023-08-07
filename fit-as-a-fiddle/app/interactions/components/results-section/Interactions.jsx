@@ -4,12 +4,11 @@ import styles from './Interactions.module.css';
 
 // Renders single interaction result
 const Interaction = ({ interaction }) => {
-  const [{ minConceptItem: name1 }, { minConceptItem: name2 }] =
-    interaction.interactionConcept;
+  const [{ minConceptItem: name1 }, { minConceptItem: name2 }] = interaction.interactionConcept;
   const { description } = interaction;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <div className={styles.interaction}>
         <h3>{name1.name}</h3>
         <TbArrowsExchange2 size={30} className={styles.icon} />
@@ -24,10 +23,13 @@ const Interaction = ({ interaction }) => {
 const Interactions = ({ interactionData }) => {
   return (
     <div>
-      {interactionData.flatMap((group) =>
+      {interactionData?.flatMap((group) =>
         group.fullInteractionType.flatMap((interactionType) =>
-          interactionType.interactionPair.map((interaction, index) => (
-            <Interaction key={index} interaction={interaction} />
+          interactionType.interactionPair.map((interaction) => (
+            <Interaction 
+              key={`${interaction.interactionConcept[0].minConceptItem.name}-${interaction.interactionConcept[1].minConceptItem.name}`} 
+              interaction={interaction} 
+            />
           ))
         )
       )}

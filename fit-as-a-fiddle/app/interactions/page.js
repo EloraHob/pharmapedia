@@ -1,12 +1,14 @@
+'use client';
+
+import React from 'react';
 import styles from './page.module.css';
 import Header from '../components/Header';
 import SelectionSection from './components/selection-section/SelectionSection';
 import ResultsSection from './components/results-section/ResultsSection';
+import { Suspense } from 'react';
 
-import jsonData from './TEST_DATA.json'; 
-
-const drugName = jsonData.drugData; // Test data containing 3 medications
-const interactionData = jsonData.interactionData; // Test data containing 3 interactions
+import jsonData from './TEST_DATA.json';
+const interactionData = jsonData.interactionData;
 
 // ALL API CALLS NEED TO HAPPEN HERE
 
@@ -35,21 +37,10 @@ const interactionData = jsonData.interactionData; // Test data containing 3 inte
 
 */
 
-/* Results section API call:
-  https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106+152923+656659
+export const dynamic = 'force-dynamic'
 
-  Service domain: https://rxnav.nlm.nih.gov
-  HTTP request: GET  /REST/interaction/list.xml?rxcuis=rxcuis&sources=sources
-
-  request: https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={['+' separated list of rxcuis in test 'drugData' array (or user-generated selectedMeds array)]}&sources=DrugBank  
-*/
-
-async function getInteractionsData() {
-  // TODO: turn array of selectedMeds into string list separated by '+'
-  const res = await fetch('https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=[`${userList}`]&sources=DrugBank')
-}
-
-export default function Interactions() {
+// Renders Interactions page
+export default function Interactions({ params, searchParams }) {
   return (
     <main className={styles.main}>
       <Header
@@ -58,10 +49,12 @@ export default function Interactions() {
         subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
         className={styles.header}
       />
+
       <SelectionSection />
-      <ResultsSection 
-        interactionData={interactionData}
-      />
+
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <ResultsSection />
+      </Suspense>
     </main>
   )
 };

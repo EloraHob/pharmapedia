@@ -1,11 +1,12 @@
 'use client'
 
+import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import Header from '../components/Header';
 import ResultsDisplayGrid from './ResultsDisplayGrid';
 import FilterSection from './FilterSection';
 import FilterSearch from './FilterSearch';
-import { FaSearch } from 'react-icons/fa';
+
 
 /* 
     WE MAY NEED TP USE openFDA API here.
@@ -14,57 +15,17 @@ import { FaSearch } from 'react-icons/fa';
     Potential filter categories: 
       DOSAGE_FORM: https://api.fda.gov/drug/drugsfda.json?search=products.dosage_form:{"term"} &limit=100     // double quotes indicates EXACT match
       MARKETING_STATUS: https://api.fda.gov/drug/drugsfda.json?search=products.marketing_status:1 &limit=100
-
+  
       
 */
 
-const medicationsData = [
-  [
-    {
-      drugName: "Aspirin",
-      activeIngredient: "Acetylsalicylic Acid",
-    },
-    {
-      drugName: "Tylenol",
-      activeIngredient: "Acetaminophen",
-    },
-    {
-      drugName: "Advil",
-      activeIngredient: "Ibuprofen",
-    },
-  ],
-  [
-    {
-      drugName: "Zyrtec",
-      activeIngredient: "Cetirizine",
-    },
-    {
-      drugName: "Claritin",
-      activeIngredient: "Loratadine",
-    },
-    {
-      drugName: "Allegra",
-      activeIngredient: "Fexofenadine",
-    },
-  ],
-  [
-    {
-      drugName: "Nexium",
-      activeIngredient: "Esomeprazole",
-    },
-    {
-      drugName: "Prilosec",
-      activeIngredient: "Omeprazole",
-    },
-    {
-      drugName: "Prevacid",
-      activeIngredient: "Lansoprazole",
-    },
-  ],
-];
-
-
 export default function Filter() {
+  const [searchResults, setSearchResults] = useState([]);
+    
+  useEffect(() => {
+    console.log('Search results updated in parent:', searchResults);
+  }, [searchResults]);
+  
   return (
     <main className={styles.main}>
       <Header
@@ -77,10 +38,10 @@ export default function Filter() {
         <FilterSection />
         <div className="d-flex-column">
           <FilterSearch
-            placeholder="enter a drug name"
-            ButtonIcon={FaSearch}
+            placeholder="enter a drug or manufacturer name"
+            setResults={setSearchResults}
           />
-          <ResultsDisplayGrid medications={medicationsData} />
+          <ResultsDisplayGrid medications={searchResults} />
         </div>
       </div>
     </main>
