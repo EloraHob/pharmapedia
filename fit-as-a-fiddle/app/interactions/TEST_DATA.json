@@ -1,19 +1,5 @@
 {
-  "drugData": [
-    {
-      "drugName": "simvastatin 40 MG Oral Tablet [Zocor]",
-      "rxcui": "152923"
-    },
-    {
-      "drugName": "fluconazole 50 MG Oral Tablet [Diflucan]",
-      "rxcui": "207106"
-    },
-    {
-      "drugName": "bosentan 125 MG Oral Tablet",
-      "rxcui": "656659"
-    }
-  ],
-  "fullInteractionTypeGroup": [
+  "interactionData": [
     {
       "sourceName": "DrugBank",
       "fullInteractionType": [

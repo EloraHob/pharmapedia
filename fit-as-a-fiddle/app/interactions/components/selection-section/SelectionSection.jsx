@@ -19,6 +19,7 @@ const InformationText = ({ text }) => (
   <p className='mt-4 text-center'>{text}</p>
 );
 
+// TODO: modify so api call is triggered on click
 const CheckInteractionsButton = () => (
   <Row className={`justify-content-end mt-3 mb-3 ${styles.checkInteractionsButton}`}>
     <Col xs="auto">
@@ -27,7 +28,7 @@ const CheckInteractionsButton = () => (
   </Row>
 );
 
-const SelectionSection = ({ medicationData }) => {
+const SelectionSection = () => {
   const [isDeleted, setIsDeleted] = useState(false); // I have to make this a client component if I use useState(). HELP
 
   return (
@@ -42,7 +43,6 @@ const SelectionSection = ({ medicationData }) => {
         </div>
 
         <SelectedMeds
-          medications={medicationData}
           onDelete={() => setIsDeleted(true)}
         />
 

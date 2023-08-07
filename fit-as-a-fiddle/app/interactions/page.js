@@ -6,7 +6,7 @@ import ResultsSection from './components/results-section/ResultsSection';
 import jsonData from './TEST_DATA.json'; 
 
 const drugName = jsonData.drugData; // Test data containing 3 medications
-const interactionData = jsonData.fullInteractionTypeGroup; // Test data containing 3 interactions
+const interactionData = jsonData.interactionData; // Test data containing 3 interactions
 
 // ALL API CALLS NEED TO HAPPEN HERE
 
@@ -23,7 +23,7 @@ const interactionData = jsonData.fullInteractionTypeGroup; // Test data containi
 
   ALTERNATIVE OPTION:
 
-  
+
   https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Zocor
 
   Service domain: https://rxnav.nlm.nih.gov
@@ -44,6 +44,11 @@ const interactionData = jsonData.fullInteractionTypeGroup; // Test data containi
   request: https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={['+' separated list of rxcuis in test 'drugData' array (or user-generated selectedMeds array)]}&sources=DrugBank  
 */
 
+async function getInteractionsData() {
+  // TODO: turn array of selectedMeds into string list separated by '+'
+  const res = await fetch('https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=[`${userList}`]&sources=DrugBank')
+}
+
 export default function Interactions() {
   return (
     <main className={styles.main}>
@@ -53,9 +58,7 @@ export default function Interactions() {
         subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
         className={styles.header}
       />
-      <SelectionSection
-        medicationData={drugName}
-      />
+      <SelectionSection />
       <ResultsSection 
         interactionData={interactionData}
       />
