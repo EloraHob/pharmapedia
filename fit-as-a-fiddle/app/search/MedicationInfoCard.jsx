@@ -11,13 +11,17 @@ const MedicationInfoCard = ({ drugName, activeIngredient, description, rxcui }) 
   useEffect(() => {
     // Parse out the ingredient name from the activeIngredient
     const indexOfOpenBracket = activeIngredient.indexOf('(');
-    const name = indexOfOpenBracket !== -1 ? activeIngredient.slice(0, indexOfOpenBracket).trim() : '';
-
-    setIngredientName(name);
+    if (indexOfOpenBracket !== -1) {
+      const name = activeIngredient.slice(0, indexOfOpenBracket).trim();
+      setIngredientName(name);
+    } else {
+      // If no brackets are found, use the original active ingredient as the ingredient name
+      setIngredientName(activeIngredient);
+    }
 
     const fetchMedLinePlusLink = async () => {
       try {
-        const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${name}&informationRecipient.languageCode.c=en`;
+        const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${ingredientName}&informationRecipient.languageCode.c=en`;
         const response = await fetch(medLinePlusUrl);
         const data = await response.json();
         const entry = data?.feed?.entry?.[0];
