@@ -3,13 +3,13 @@ import Card from 'react-bootstrap/Card';
 
 const MedLinePlusBaseUrl = 'https://connect.medlineplus.gov/service';
 
-const MedicationInfoCard = ({ drugName, activeIngredient, description, rxcui }) => {
+const MedicationInfoCard = ({ drugName, activeIngredient, description}) => {
   const [medLinePlusLink, setMedLinePlusLink] = useState('');
   const [ingredientName, setIngredientName] = useState('');
   const [isLinkGenerated, setIsLinkGenerated] = useState(false);
 
   useEffect(() => {
-    // Parse out the ingredient name from the activeIngredient
+    // Parse out the ingredient name from the activeIngredient if it contains brackets
     const indexOfOpenBracket = activeIngredient.indexOf('(');
     if (indexOfOpenBracket !== -1) {
       const name = activeIngredient.slice(0, indexOfOpenBracket).trim();
@@ -18,23 +18,27 @@ const MedicationInfoCard = ({ drugName, activeIngredient, description, rxcui }) 
       // If no brackets are found, use the original active ingredient as the ingredient name
       setIngredientName(activeIngredient);
     }
+  }, [activeIngredient]);
 
+  useEffect(() => {
     const fetchMedLinePlusLink = async () => {
-      try {
-        const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${ingredientName}&informationRecipient.languageCode.c=en`;
-        const response = await fetch(medLinePlusUrl);
-        const data = await response.json();
-        const entry = data?.feed?.entry?.[0];
-        const link = entry?.link?.[0]?.href || '';
-        setMedLinePlusLink(link);
-        setIsLinkGenerated(true); // Set the flag to true when the link is generated
-      } catch (error) {
-        console.error('Error fetching MedLinePlus link:', error);
+      if (ingredientName) {
+        try {
+          const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${ingredientName}&informationRecipient.languageCode.c=en`;
+          const response = await fetch(medLinePlusUrl);
+          const data = await response.json();
+          const entry = data?.feed?.entry?.[0];
+          const link = entry?.link?.[0]?.href || '';
+          setMedLinePlusLink(link);
+          setIsLinkGenerated(true); // Set the flag to true when the link is generated
+        } catch (error) {
+          console.error('Error fetching MedLinePlus link:', error);
+        }
       }
     };
 
     fetchMedLinePlusLink();
-  }, [rxcui, activeIngredient]);
+  }, [ingredientName]);
 
   const openMedLinePlusLink = () => {
     if (isLinkGenerated && medLinePlusLink) {
