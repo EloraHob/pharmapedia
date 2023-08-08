@@ -1,39 +1,66 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import Header from '../components/Header';
 import ResultsDisplayGrid from './ResultsDisplayGrid';
 import FilterSection from './FilterSection';
 import FilterSearch from './FilterSearch';
-
-const SEARCH_STATUS = {
-  INITIAL: 'initial',
-  LOADING: 'loading',
-  SUCCESS: 'success',
-  ERROR: 'error',
-  NO_RESULTS: 'no_results',
-};
+import axios from 'axios';
 
 export default function Filter() {
   const [searchResults, setSearchResults] = useState([]);
-  const [selectedFilters, setSelectedFilters] = useState({});
-  const [searchStatus, setSearchStatus] = useState(SEARCH_STATUS.INITIAL);
+  const [firstVisit, setFirstVisit] = useState(true);
+  const [activeFilters, setActiveFilters] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  const renderContent = () => {
-    switch (searchStatus) {
-      case SEARCH_STATUS.INITIAL:
-        return '';
-      case SEARCH_STATUS.LOADING:
-        return <div>Loading...</div>; // consider adding a loading state
-      case SEARCH_STATUS.SUCCESS:
-        return <ResultsDisplayGrid medications={searchResults} />;
-      case SEARCH_STATUS.NO_RESULTS:
-        return <div>No matches found!</div>;
-      case SEARCH_STATUS.ERROR:
-      default:
-        return <div>Something went wrong. Please try again.</div>;
+  const fetchResults = (searchType, searchTerm) => {
+    setSearchResults([]);
+    setErrorMsg(null);
+    const baseURL = `https://api.fda.gov/drug/drugsfda.json?search=`;
+
+    let query;
+    if (searchType === "Medication") {
+      query = `products.brand_name=${searchTerm}`;
+    } else if (searchType === "Manufacturer") {
+      query = `openfda.manufacturer_name=${searchTerm}+sponsor_name=${searchTerm}`;
     }
+
+    // If there are active filters, combine them with the query
+    if (activeFilters) {
+      query = `${query}+AND+${activeFilters}`;
+    }
+
+    const url = `${baseURL}${query}&limit=5`;
+
+    axios
+      .get(url)
+      .then((response) => {
+        if (response.data.error && response.data.error.code === "NOT_FOUND") {
+          setSearchResults([]);
+          setFirstVisit(false);
+          setErrorMsg(response.data.error.message);
+        } else {
+          const formattedResults = response.data.results.map((result) => {
+            const manufacturer = result.sponsor_name;
+            return result.products.map((product) => ({
+              drugName: product.brand_name,
+              manufacturer: manufacturer,
+              description: product.route
+            }));
+          }).flat();
+          setSearchResults(formattedResults);
+          setErrorMsg(null);
+          setFirstVisit(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setErrorMsg("No results found. Try modifying your search for better results.");
+      })
+      .finally(() => {
+        setFirstVisit(false);
+      });
   };
 
   return (
@@ -45,19 +72,16 @@ export default function Filter() {
         className={styles.header}
       />
       <div className='d-flex'>
-        <FilterSection onFiltersChange={setSelectedFilters} />
+        <FilterSection setActiveFilters={setActiveFilters} />
         <div className={styles.filterSearchContainer}>
           <FilterSearch
-            placeholder="enter a drug name or manufacturer"
-            setResults={setSearchResults}
-            filters={selectedFilters}
-            searchStatus={searchStatus}
-            setSearchStatus={setSearchStatus}
+            placeholder="enter a drug or manufacturer name"
+            fetchResults={fetchResults}
           />
-
-          {renderContent()}
+          {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+          <ResultsDisplayGrid medications={searchResults} firstVisit={firstVisit} />
         </div>
       </div>
     </main>
-  );
+  )
 }

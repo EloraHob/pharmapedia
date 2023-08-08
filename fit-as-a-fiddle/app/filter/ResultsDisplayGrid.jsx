@@ -18,11 +18,11 @@ const MedicationInfoCard = ({ drugName, manufacturer, description }) => {
 
 const ResultsDisplayGrid = ({ medications = [], firstVisit = true }) => {
   if (firstVisit) {
-    return null; 
+    return <p>Please make a search to see results.</p>;
   }
 
-  if (!medications || medications.length === 0) {
-    return <p>No matching results found. Consider modifying your search for better results. </p>
+  if (medications.length === 0) {
+    return '';
   }
 
   return (

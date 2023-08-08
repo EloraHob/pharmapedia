@@ -33,45 +33,58 @@ const filterOptions = [
   },
 ];
 
-const FilterSection = ({ onFiltersChange }) => {
-  const initialFilters = filterOptions.reduce(
-    (acc, curr) => ({
-      ...acc,
-      [curr.category]: curr.options.reduce(
-        (acc, curr) => ({ ...acc, [curr]: false }),
-        {}
-      ),
-    }),
-    {}
-  );
+const categoryMapping = {
+  "Dosage Form": "products.dosage_form",
+  "Route of Administration": "products.route",
+  "Drug Status": "products.marketing_status",
+};
 
-  const [filters, setFilters] = useState(initialFilters);
+const FilterSection = ({ setActiveFilters }) => {
+  const initialFilterState = filterOptions.reduce((acc, curr) => {
+    acc[curr.category] = curr.options.reduce((a, option) => {
+      a[option] = false;
+      return a;
+    }, {});
+    return acc;
+  }, {});
+
+  const [filters, setFilters] = useState(initialFilterState);
 
   const handleCheck = (category, option) => {
-    setFilters({
-      ...filters,
+    setFilters(prevState => ({
+      ...prevState,
       [category]: {
-        ...filters[category],
-        [option]: !filters[category][option],
-      },
-    });
+        ...prevState[category],
+        [option]: !prevState[category][option],
+      }
+    }));
   };
 
-  const resetFilters = () => setFilters(initialFilters);
+  const resetFilters = () => {
+    setFilters(initialFilterState);
+  };
 
   const handleApplyFilters = () => {
-    const appliedFilters = Object.entries(filters).reduce((acc, [category, options]) => {
-        const selectedOptions = Object.keys(options).filter(option => options[option]);
-        if (selectedOptions.length > 0) {
-            acc[category] = selectedOptions;
-        }
-        return acc;
-    }, {});
+    let querySegments = [];
 
-    // Send the applied filters to the parent component
-    onFiltersChange(appliedFilters);
-    console.log(appliedFilters);
-};
+    for (const [category, options] of Object.entries(filters)) {
+        let selectedOptions = [];
+        
+        for (const [option, isChecked] of Object.entries(options)) {
+            if (isChecked) {
+                selectedOptions.push(`${categoryMapping[category]}=${option.toLowerCase()}`);
+            }
+        }
+
+        if (selectedOptions.length) {
+            querySegments.push(selectedOptions.join("+AND+"));
+        }
+    }
+
+    const fullQuery = querySegments.join("+AND+");
+    setActiveFilters(fullQuery);
+    console.log(fullQuery);
+  };
 
   return (
     <div className="border border-dark rounded w-25 m-3 p-3">
