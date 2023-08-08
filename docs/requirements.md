@@ -27,7 +27,7 @@
       - 3.2d - Adverse effects: displayed as a list, no more than 20 items
       - 3.2e - Side effects: displayed as a list, no more than 20 items
    - 3.3 - Back arrow that, when clicked, will direct the user to the previous page
-4. Medication Interaction Feature COMPLETE (#12-18)
+4. Medication Interaction Feature
    - 4.1 - The page contains a heading with header text and subtext that indicate the purpose of the page.
    - 4.2 - A subheading will instruct the user on how to check for medication interactions. 
    - 4.3 - The software shall provide a means (search bar) for the user to search & select (as a button) medications in our database. 
