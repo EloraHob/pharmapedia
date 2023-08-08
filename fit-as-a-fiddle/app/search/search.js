@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './search.module.css';
 import MedicationSearch from './MedicationSearch';
-import MedicationInfoCard from '../filter/MedicationInfoCard';
+import MedicationInfoCard from './MedicationInfoCard';
 import ResultsDisplayGrid from '../filter/ResultsDisplayGrid';
 
 const medicationsData = [
