@@ -1,60 +1,37 @@
-'use client';
+'use client'
 
-import React from 'react';
-import styles from './page.module.css';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import SelectionSection from './components/selection-section/SelectionSection';
 import ResultsSection from './components/results-section/ResultsSection';
-import { Suspense } from 'react';
+import styles from './page.module.css';
 
-import jsonData from './TEST_DATA.json';
-const interactionData = jsonData.interactionData;
+const Interactions = () => {
+  const [results, setResults] = useState(null);
+  const [hasChecked, setHasChecked] = useState(false);
 
-// ALL API CALLS NEED TO HAPPEN HERE
+  const fetchInteractions = (rxcuiList) => {
+    setHasChecked(true);
+    fetch(`https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=${rxcuiList}&sources=DrugBank`)
+      .then(response => response.json())
+      .then(data => {
+        setResults(data);
+      })
+      .catch(error => console.error("Error fetching data:", error));
+  };
 
-/* Selection section API call:
-  https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=zocor&maxEntries=4
-
-  Service domain: https://rxnav.nlm.nih.gov
-  HTTP request: GET  /REST/approximateTerm.xml?term=[value]&maxEntries=[value]&option=[value]
-
-  request: https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term={userInput}&maxEntries=4
-
-  ** Must filter these results to ensure that ONLY entries containing both name AND rxcui are displayed to the user. **
-
-
-  ALTERNATIVE OPTION:
-
-
-  https://rxnav.nlm.nih.gov/REST/rxcui.json?name=Zocor
-
-  Service domain: https://rxnav.nlm.nih.gov
-  HTTP request: GET  /REST/rxcui.xml?name=yourName&allsrc=0or1&srclist=yourSources&search=0or1or2
-
-  request: https://rxnav.nlm.nih.gov/REST/rxcui.json?name={userInput}&search={0 for exact, 1 for normalized, 2 for best match}
-
-  ** This method would simply take the user input and generate card with the input as the term name and the rxcui as the API result. Would need to create component to display error if no result is found. **
-
-*/
-
-export const dynamic = 'force-dynamic'
-
-// Renders Interactions page
-export default function Interactions({ params, searchParams }) {
   return (
-    <main className={styles.main}>
+    <main className='min-vh-100'>
       <Header
         bgImage="/images/pills-xaxis-bg-teal.jpeg"
         title="Drug Interaction Checker"
         subheader="Improve your safety and awareness by checking for possible conflicts between your medications."
         className={styles.header}
       />
-
-      <SelectionSection />
-
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <ResultsSection />
-      </Suspense>
+      <SelectionSection onCheckInteractions={fetchInteractions} />
+      <ResultsSection results={results} hasChecked={hasChecked} />
     </main>
-  )
+  );
 };
+
+export default Interactions;

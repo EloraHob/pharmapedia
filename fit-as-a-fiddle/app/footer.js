@@ -1,4 +1,5 @@
 'use client'
+import { Autour_One } from 'next/font/google';
 import React from 'react';
 import { Container, Nav, Button, Row, Col } from 'react-bootstrap';
 
