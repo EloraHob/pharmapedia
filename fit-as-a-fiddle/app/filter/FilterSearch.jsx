@@ -1,17 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { InputGroup, Dropdown, FormControl, Button } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import styles from './FilterSection.module.css';
+import styles from "./FilterSection.module.css";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const SearchBar = ({ placeholder, setResults }) => {
+const FilterSearch = ({
+  placeholder,
+  setResults,
+  filters,
+  setSearchStatus,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("Medication");
   const router = useRouter();
 
+  const categoryMapping = {
+    "Dosage Form": "product.dosage_form",
+    "Route of Administration": "route",
+    "Drug Status": "marketing_status",
+  };
+
   const handleSelect = (e) => {
     setSearchType(e);
+  };
+
+  const formatFiltersForQuery = (filters) => {
+    return Object.entries(filters)
+      .map(([key, values]) => {
+        const mappedKey = categoryMapping[key] || key;
+        return values.map((value) => `${mappedKey}:${value}`).join("+AND+");
+      })
+      .join("+AND+");
   };
 
   const handleSubmit = () => {
@@ -20,33 +40,40 @@ const SearchBar = ({ placeholder, setResults }) => {
     // Modify the query depending on the searchType
     let query;
     if (searchType === "Medication") {
-      query = `products.brand_name:"${searchTerm}"`;
+      query = `products.brand_name=${searchTerm}`;
     } else if (searchType === "Manufacturer") {
-      query = `openfda.manufacturer_name:${searchTerm}+sponsor_name:${searchTerm}`;
+      query = `openfda.manufacturer_name=${searchTerm}+sponsor_name=${searchTerm}`;
     }
 
-    const url = `${baseURL}${query}&limit=5`;
+    const filtersQuery = formatFiltersForQuery(filters);
+    const finalQuery = filtersQuery ? `${query}+AND+${filtersQuery}` : query;
+
+    const url = `${baseURL}${finalQuery}&limit=5`;
 
     axios
       .get(url)
       .then((response) => {
-        const formattedResults = response.data.results
-          .map((result) =>
-            result.products.map((product) => ({
-              drugName: product.brand_name,
-              manufacturer:
-                result.sponsor_name ||
-                product.active_ingredients[0].name +
-                  " " +
-                  product.active_ingredients[0].strength,
-              description: product.route,
-            }))
-          )
-          .flat();
-        setResults(formattedResults);
+        if (response.data.error) {
+          setSearchStatus("error");
+          setResults([]);
+        } else {
+          const formattedResults = response.data.results
+            .map((result) => {
+              return (result.products || []).map((product) => ({
+                drugName: product.brand_name || "Unknown Drug",
+                manufacturer: result.sponsor_name || "Unknown Manufacturer",
+                description: product.dosage_form || "Unknown Dosage Form",
+              }));
+            })
+            .flat();
+
+          setResults(formattedResults);
+          setSearchStatus("success");
+        }
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
+        setSearchStatus("error");
       });
   };
 
@@ -87,4 +114,6 @@ const SearchBar = ({ placeholder, setResults }) => {
   );
 };
 
-export default SearchBar;
+export default FilterSearch;
+
+// https://rxnav.nlm.nih.gov/REST/rxcui.json?name={useInputQuery}&search=1
