@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './search.module.css';
 import MedicationSearch from './MedicationSearch';
 import MedicationInfoCard from './MedicationInfoCard';
 import ResultsDisplayGrid from './ResultsDisplayGrid';
+
 
 const medicationsData = [
   [
@@ -89,18 +90,38 @@ const SearchPage = () => {
     }
   };
 
-  const handleHideSection = () => {
-    setIsSectionHidden(true);
-  };
-
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const totalMedications = searchResults.length;
   const totalPages = Math.ceil(totalMedications / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalMedications);
+
+  useEffect(() => {
+    // Retrieve the search term from the URL query
+    const urlParams = new URLSearchParams(window.location.search);
+    const term = urlParams.get('term');
+
+    // Perform the search using the term
+    if (term) {
+      setSearchTerm(term);
+
+      const performSearch = async () => {
+        try {
+          const data = await MedicationSearch(term);
+          setSearchResults(data.results);
+          setCurrentPage(1);
+          setIsSectionHidden(true);
+        } catch (error) {
+          console.error('Error searching medication:', error);
+          setIsSectionHidden(true);
+          setErrorMessage('An error occurred while searching for medications. Please try again later.');
+        }
+      };
+
+      performSearch();
+    }
+  }, []);
 
   return (
     <div className={styles.search}>
@@ -120,7 +141,7 @@ const SearchPage = () => {
         />
 
         {/* Search now button */}
-        <button className={styles.button} onClick={handleSearch}>
+        <button className={styles.button} disabled={!searchTerm} onClick={handleSearch}>
           Search Now
         </button>
       </div>
@@ -145,7 +166,7 @@ const SearchPage = () => {
                   drugName={result.brand_name}
                   activeIngredient={result.active_ingredients[0]?.name || 'Unknown'}
                   description={result.labeler_name || 'Description not available'}
-                  rxcui={result.openfda.rxcui}
+                  rxcui={result.openfda?.rxcui || 0}
                 />
               </div>
             ))}
