@@ -15,7 +15,7 @@ const MyNavbar = () => {
           <NavDropdown title="Features" id="navbarDropdown" className="me-4">
             <NavDropdown.Item href="/filter">Medication Information Filter</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#">Search</NavDropdown.Item>
+            <NavDropdown.Item href="/search">Search</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/interactions">Interaction checker</NavDropdown.Item>
           </NavDropdown>

@@ -10,42 +10,57 @@ import {
   Dropdown,
   Card,
 } from "react-bootstrap";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const SearchBar = ({ placeholder, ButtonIcon }) => {
+const SearchBar = ({ placeholder, ButtonIcon, onDrugSelect }) => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedDrug, setSelectedDrug] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
       if (query) {
         try {
-          const response = await axios.get(`https://rxnav.nlm.nih.gov/REST/Prescribe/approximateTerm.json?term=${encodeURIComponent(query)}&maxEntries=4`);
+          const response = await axios.get(
+            `https://rxnav.nlm.nih.gov/REST/Prescribe/approximateTerm.json?term=${encodeURIComponent(
+              query
+            )}&maxEntries=4`
+          );
           setSearchResults(response.data?.approximateGroup?.candidate || []);
         } catch (error) {
           console.error("API request failed:", error);
         }
       }
-    }, 500);  // waiting for 500ms after user stops typing
+    }, 100);
 
     return () => clearTimeout(delayDebounceFn);
   }, [query]);
 
-  const handleDrugSelect = (drugName, rxcui) => {
-    setQuery("");
+  // Autofill input field with selected result from searchbar dropdown
+  const handleDrugOptionSelect = (drugName, rxcui) => {
+    setQuery(drugName); 
     setSearchResults([]);
     setSelectedDrug({ drugName, rxcui });
+  };
+
+  // Logic for + button of searchBar
+  const handleAddButtonClick = (e) => {
+    e.preventDefault();
+    if (selectedDrug) {
+      if (onDrugSelect) {
+        onDrugSelect(selectedDrug);
+      }
+      setQuery("");
+      setSelectedDrug(null);
+    }
   };
 
   return (
     <Container>
       <Row className="justify-content-center">
         <Col xs={6} md={4}>
-          <Form inline="true">
-            <InputGroup>
+          <Form inline="true" onSubmit={handleAddButtonClick}>
+            <InputGroup className="bg-white">
               <FormControl
                 type="text"
                 placeholder={placeholder}
@@ -53,7 +68,7 @@ const SearchBar = ({ placeholder, ButtonIcon }) => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <Button type="submit">
+              <Button type="submit" disabled={searchResults.length === 0}>
                 <ButtonIcon size={20} />
               </Button>
             </InputGroup>
@@ -62,7 +77,12 @@ const SearchBar = ({ placeholder, ButtonIcon }) => {
             <Dropdown>
               <Dropdown.Menu show>
                 {searchResults.map((item) => (
-                  <Dropdown.Item key={item.rxcui} onClick={() => handleDrugSelect(item.name, item.rxcui)}>
+                  <Dropdown.Item
+                    key={item.rxcui}
+                    onClick={() =>
+                      handleDrugOptionSelect(item.name, item.rxcui)
+                    }
+                  >
                     {item.name}
                   </Dropdown.Item>
                 ))}
@@ -71,19 +91,6 @@ const SearchBar = ({ placeholder, ButtonIcon }) => {
           )}
         </Col>
       </Row>
-
-      {selectedDrug && (
-        <Row className="justify-content-center mt-3">
-          <Col xs={6} md={4}>
-            <Card>
-              <Card.Body>
-                <Card.Title>{selectedDrug.drugName}</Card.Title>
-                <Card.Text>RXCUI: {selectedDrug.rxcui}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      )}
     </Container>
   );
 };
