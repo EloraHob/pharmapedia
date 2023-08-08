@@ -1,8 +1,17 @@
-'use client'
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Image } from 'react-bootstrap';
 
 const MyNavbar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = () => {
+    if (searchTerm.trim() !== '') {
+      // Use the browser's JavaScript API to navigate to the search page with the search term as a query parameter
+      window.location.href = `/search?term=${encodeURIComponent(searchTerm)}`;
+    }
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/" className="ms-3">
@@ -22,8 +31,17 @@ const MyNavbar = () => {
           <Nav.Link href="/about" className="me-4" active>About</Nav.Link>
         </Nav>
         <Form className="d-flex ms-auto my-2 my-lg-0">
-          <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
-          <Button variant="outline-success">Search</Button>
+          <FormControl
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button variant="outline-success" onClick={handleSearch} disabled={!searchTerm.trim()}>
+            Search
+          </Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>
