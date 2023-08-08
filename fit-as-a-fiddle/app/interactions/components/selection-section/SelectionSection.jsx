@@ -41,7 +41,7 @@ const SelectionSection = ({ onCheckInteractions }) => {
         <Button
           variant="primary"
           onClick={() => onCheckInteractions(rxcuiList)}
-          disabled={selectedMedCards.length < 2} // Disabling the button when less than 2 meds are selected
+          disabled={selectedMedCards.length < 2}
         >
           Check interactions
         </Button>

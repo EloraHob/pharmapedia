@@ -5,7 +5,7 @@ import styles from './FilterSection.module.css';
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const SearchBar = ({ placeholder, setResults }) => {
+const SearchBar = ({ placeholder, fetchResults }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("Medication");
   const router = useRouter();
@@ -15,39 +15,7 @@ const SearchBar = ({ placeholder, setResults }) => {
   };
 
   const handleSubmit = () => {
-    const baseURL = `https://api.fda.gov/drug/drugsfda.json?search=`;
-
-    // Modify the query depending on the searchType
-    let query;
-    if (searchType === "Medication") {
-      query = `products.brand_name:"${searchTerm}"`;
-    } else if (searchType === "Manufacturer") {
-      query = `openfda.manufacturer_name:${searchTerm}+sponsor_name:${searchTerm}`;
-    }
-
-    const url = `${baseURL}${query}&limit=5`;
-
-    axios
-      .get(url)
-      .then((response) => {
-        const formattedResults = response.data.results
-          .map((result) =>
-            result.products.map((product) => ({
-              drugName: product.brand_name,
-              manufacturer:
-                result.sponsor_name ||
-                product.active_ingredients[0].name +
-                  " " +
-                  product.active_ingredients[0].strength,
-              description: product.route,
-            }))
-          )
-          .flat();
-        setResults(formattedResults);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
+    fetchResults(searchType, searchTerm);
   };
 
   useEffect(() => {

@@ -83,6 +83,8 @@ const SearchPage = () => {
       setSearchResults(data.results);
       setCurrentPage(1);
       setIsSectionHidden(true);
+      setCurrentPage(1);
+      setIsSectionHidden(true);
     } catch (error) {
       console.error('Error searching medication:', error);
       setIsSectionHidden(true);
@@ -114,6 +116,8 @@ const SearchPage = () => {
           setIsSectionHidden(true);
         } catch (error) {
           console.error('Error searching medication:', error);
+      setIsSectionHidden(true);
+      setErrorMessage('An error occurred while searching for medications. Please try again later.');
           setIsSectionHidden(true);
           setErrorMessage('An error occurred while searching for medications. Please try again later.');
         }
