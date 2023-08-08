@@ -48,7 +48,6 @@ const ResultsDisplayGrid = ({ medications }) => {
            </Col>
          ))}
        </Row>
-       <Pagination>{items}</Pagination>
     </Container>
   );
 };
