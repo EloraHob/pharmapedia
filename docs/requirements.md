@@ -1,5 +1,5 @@
 # Requirements
-1. Homepage
+1. Homepage COMPLETE (#22, #23, #24)
    - 1.1 - After the homepage webpage loads, the “banner & tagline” section will have an image and a paragraph describing a news article that speaks about medication nonadherence in the medical field.
       - 1.1a - We will also link the article at the bottom of this section. 
    - 1.2 - After the homepage webpage loads, users will be able to click on three feature cards.
@@ -9,8 +9,8 @@
       - 1.2d - A previously hidden description box will appear when the user hovers over the rectangle area of the “learn more” section.
       - 1.2e - Each feature card’s description box contains a paragraph describing what the feature is.
       - 1.2f - If the user's cursor moves away from the “learn more” section, the description box disappears.
-2. About Page
-   - 2.1 - About page is static and does not have anything functionality aside from the navigation bar
+2. About Page COMPLETE (#42 and #43)
+   - 2.1 - About page is static and does not have anything functionality aside from the navigation bar 
    - 2.2 - A title will be at the top of the page to tell the user where they are in the site “About Us”
    - 2.3 - 4 biography cards will be present
       - 2.3a - Description of group member
@@ -39,7 +39,7 @@
       - 4.4b - Identified drug interactions will be displayed with the medication names, severity score (if one exists), and a brief information summary (less than 100 words).
       - 4.4c - A liability message will be displayed advising users to communicate with their healthcare provider, regardless of the results displayed by this system. 
 
-5. Search Feature and Errors
+5. Search Feature and Errors COMPLETE (#4, #5, #6, #7)
    - 5.1 - The search page contains a large heading indicating the purpose of the webpage (Search).
    - 5.2 - A prominent search bar will appear on the page, with an icon on the left and a ‘search’ button on the right. 
       - 5.2a - When the user clicks on the search bar, they are prompted to write text. If the input matches any medication names from the API, results will be displayed in a dropdown below the search bar. 
@@ -68,13 +68,13 @@
          - 6.3ea - The default/starting page is 1
          - 6.3eb - Users can click a different page number other than the current page to navigate and view those results
 7. Sitewide Features
-   - 7.1 Navigation Bar
+   - 7.1 Navigation Bar COMPLETE (#44, #45, #53, #55, and #56)
       - 7.1a - Home, Features, About, and Search buttons are clickable and the user will be brought to the corresponding page
       - 7.1b - Website name and logo are visible in the left corner of navigation bar
       - 7.1c - Appears on all pages and formatting is consistent
       - 7.1d - When user’s cursor hovers over the “WebAppName” or the “logo,” the cursor turns into a pointer hand
 	       - 7.1da - When the user clicks on the “WebAppName” or the “logo,” it leads the user back to the main page
-   - 7.2 Footer
+   - 7.2 Footer COMPLETE (#46)
       - 7.2a - The footer displays “INFO 442 Summer 2023 Class Project,” “MedLine,” “RxNorm,” and “Copyright and Disclaimer.”
 8. Non Functional Requirements
    - 8.1 - The application will have a First Contentful Paint under 10 seconds for each web page. 
