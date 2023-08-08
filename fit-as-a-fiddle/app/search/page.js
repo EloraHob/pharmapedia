@@ -10,7 +10,7 @@ export default function Interactions() {
       <Header
         bgImage="/images/search-header.jpg"
         title="Just Search"
-        subheader="Search for information about a specific medication"
+        subheader="Learn more about usage, precautions, dietary instructions, and side effects of a medication by clicking on individual result card"
         className={styles.header}
       />
       <SearchSection/>

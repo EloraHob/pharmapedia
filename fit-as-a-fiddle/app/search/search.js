@@ -164,9 +164,9 @@ const SearchPage = () => {
               <div key={result.product_id} className={styles.medicationCard}>
                 <MedicationInfoCard
                   drugName={result.brand_name}
-                  activeIngredient={result.active_ingredients[0]?.name || 'Unknown'}
+                  activeIngredient={result.active_ingredients[0]?.name + " (" + result.active_ingredients[0]?.strength + ")"|| 'Unknown'}
                   description={result.labeler_name || 'Description not available'}
-                  rxcui={result.openfda?.rxcui || 0}
+                  rxcui={result.openfda?.rxcui ? result.openfda.rxcui[0] : 0}
                 />
               </div>
             ))}
