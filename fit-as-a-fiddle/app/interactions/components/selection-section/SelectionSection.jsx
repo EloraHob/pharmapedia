@@ -2,26 +2,10 @@
 
 import React, { useState } from "react";
 import SelectedMeds from "./SelectedMeds";
-import SearchBar from "@/app/components/SearchBar";
+import SearchBar from "@/app/interactions/components/selection-section/SearchBar";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 import styles from "./SelectionSection.module.css";
-
-// Test data
-const TEST_DATA = [
-  {
-    drugName: "simvastatin 40 MG Oral Tablet [Zocor]",
-    rxcui: "152923",
-  },
-  {
-    drugName: "fluconazole 50 MG Oral Tablet [Diflucan]",
-    rxcui: "207106",
-  },
-  {
-    drugName: "bosentan 125 MG Oral Tablet",
-    rxcui: "656659",
-  },
-];
 
 // Informational subheading above search bar
 const InformationText = () => (
@@ -32,10 +16,16 @@ const InformationText = () => (
 
 // Renders content for the medication selection section of the Interactions page.
 const SelectionSection = ({ onCheckInteractions }) => {
-  const [selectedMedCards, setSelectedMedCards] = useState(TEST_DATA);
+  const [selectedMedCards, setSelectedMedCards] = useState([]);
 
   const handleDeleteCard = (index) => {
     setSelectedMedCards(selectedMedCards.filter((_, i) => i !== index));
+  };
+
+  const handleAddMedCard = (drug) => {
+    if (!selectedMedCards.some((item) => item.rxcui === drug.rxcui)) {
+      setSelectedMedCards((prev) => [...prev, drug]);
+    }
   };
 
   // Concats rxcui for each selected med into + separated string
@@ -65,7 +55,11 @@ const SelectionSection = ({ onCheckInteractions }) => {
       <InformationText />
       <Container className={styles.container}>
         <div className={styles.search}>
-          <SearchBar placeholder="Enter a drug name" ButtonIcon={FaPlus} />
+          <SearchBar
+            placeholder="Enter a drug name"
+            ButtonIcon={FaPlus}
+            onDrugSelect={handleAddMedCard}
+          />
         </div>
 
         <SelectedMeds
