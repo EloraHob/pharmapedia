@@ -7,18 +7,6 @@ import ResultsDisplayGrid from './ResultsDisplayGrid';
 import FilterSection from './FilterSection';
 import FilterSearch from './FilterSearch';
 
-
-/* 
-    WE MAY NEED TP USE openFDA API here.
-    API KEY: 9Coj99auGenhBnKNdAQ5bOOAdFd8aGYSXcEKtAcV
-
-    Potential filter categories: 
-      DOSAGE_FORM: https://api.fda.gov/drug/drugsfda.json?search=products.dosage_form:{"term"} &limit=100     // double quotes indicates EXACT match
-      MARKETING_STATUS: https://api.fda.gov/drug/drugsfda.json?search=products.marketing_status:1 &limit=100
-  
-      
-*/
-
 export default function Filter() {
   const [searchResults, setSearchResults] = useState([]);
   
@@ -32,7 +20,7 @@ export default function Filter() {
       />
       <div className='d-flex'>
         <FilterSection />
-        <div className="d-flex-column">
+        <div className={styles.filterSearchContainer}>
           <FilterSearch
             placeholder="enter a drug or manufacturer name"
             setResults={setSearchResults}
