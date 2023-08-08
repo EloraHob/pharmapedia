@@ -33,7 +33,7 @@ const filterOptions = [
   },
 ];
 
-const FilterSection = () => {
+const FilterSection = ({ onFiltersChange }) => {
   const initialFilters = filterOptions.reduce(
     (acc, curr) => ({
       ...acc,
@@ -60,9 +60,18 @@ const FilterSection = () => {
   const resetFilters = () => setFilters(initialFilters);
 
   const handleApplyFilters = () => {
-    // Your filter logic here
-    console.log(filters);
-  };
+    const appliedFilters = Object.entries(filters).reduce((acc, [category, options]) => {
+        const selectedOptions = Object.keys(options).filter(option => options[option]);
+        if (selectedOptions.length > 0) {
+            acc[category] = selectedOptions;
+        }
+        return acc;
+    }, {});
+
+    // Send the applied filters to the parent component
+    onFiltersChange(appliedFilters);
+    console.log(appliedFilters);
+};
 
   return (
     <div className="border border-dark rounded w-25 m-3 p-3">
