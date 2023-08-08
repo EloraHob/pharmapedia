@@ -1,5 +1,5 @@
 # Requirements
-1. Homepage
+1. Homepage COMPLETE (#22, #23, #24)
    - 1.1 - After the homepage webpage loads, the “banner & tagline” section will have an image and a paragraph describing a news article that speaks about medication nonadherence in the medical field.
       - 1.1a - We will also link the article at the bottom of this section. 
    - 1.2 - After the homepage webpage loads, users will be able to click on three feature cards.
