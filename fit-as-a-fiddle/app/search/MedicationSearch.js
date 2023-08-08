@@ -7,7 +7,7 @@ const MedicationSearch = async (medicationName) => {
     const response = await axios.get(openFdaBaseUrl, {
       params: {
         search: `openfda.generic_name=${medicationName}`,
-        limit: 50,
+        limit: 27,
       },
     });
     return response.data;
