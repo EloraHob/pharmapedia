@@ -42,14 +42,15 @@ const SearchPage = () => {
       {/* Display search results */}
       <div>
         <ul>
-          {searchResults.map((result) => (
+          {searchResults.map((result) => {
+            console.log(result)
+            return (
             <MedicationInfoCard
               key={result.product_id}
               drugName={result.brand_name}
-              activeIngredient={result.active_ingredients.map((ingredient) => ingredient.name)}
-              description={result.packaging.description}
-            />
-          ))}
+              activeIngredient={result.active_ingredients[0].name}
+              description={result.labeler_name}/>
+          )})}
         </ul>
       </div>
     </div>
