@@ -6,6 +6,7 @@ const MedLinePlusBaseUrl = 'https://connect.medlineplus.gov/service';
 const MedicationInfoCard = ({ drugName, activeIngredient, description, rxcui }) => {
   const [medLinePlusLink, setMedLinePlusLink] = useState('');
   const [ingredientName, setIngredientName] = useState('');
+  const [isLinkGenerated, setIsLinkGenerated] = useState(false);
 
   useEffect(() => {
     // Parse out the ingredient name from the activeIngredient
@@ -16,28 +17,28 @@ const MedicationInfoCard = ({ drugName, activeIngredient, description, rxcui }) 
 
     const fetchMedLinePlusLink = async () => {
       try {
-        const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${ingredientName}&informationRecipient.languageCode.c=en`;
+        const medLinePlusUrl = `${MedLinePlusBaseUrl}?knowledgeResponseType=application%2Fjson&mainSearchCriteria.v.cs=2.16.840.1.113883.6.88&mainSearchCriteria.v.c=&mainSearchCriteria.v.dn=${name}&informationRecipient.languageCode.c=en`;
         const response = await fetch(medLinePlusUrl);
         const data = await response.json();
         const entry = data?.feed?.entry?.[0];
         const link = entry?.link?.[0]?.href || '';
         setMedLinePlusLink(link);
+        setIsLinkGenerated(true); // Set the flag to true when the link is generated
       } catch (error) {
         console.error('Error fetching MedLinePlus link:', error);
       }
     };
 
     fetchMedLinePlusLink();
-  }, [rxcui]);
+  }, [rxcui, activeIngredient]);
 
   const openMedLinePlusLink = () => {
-    if (medLinePlusLink) {
+    if (isLinkGenerated && medLinePlusLink) {
       window.open(medLinePlusLink, '_blank');
     } else {
-      alert(`We don't have information about "${ingredientName}" recored yet. Please try clicking on other medication cards.`);
+      alert(`Information about ${ingredientName} is not yet recorded. Please try clicking on other medication cards.`);
     }
   };
-
   return (
     <div onClick={openMedLinePlusLink} style={{ textDecoration: 'none', cursor: 'pointer' }}>
       <Card className="m-3" style={{ width: '18rem' }}>
