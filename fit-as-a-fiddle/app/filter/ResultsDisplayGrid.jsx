@@ -17,10 +17,8 @@ const MedicationInfoCard = ({ drugName, manufacturer, description }) => {
 };
 
 const ResultsDisplayGrid = ({ medications = [] }) => {
-  console.log('fromt the display grid: ' + medications);
-
   if (!medications || medications.length === 0) {
-    return <p>No results found. Try modifying your search for better results. </p>;
+    return <p>No matching results found. Consider modifying your search for better results. </p>
   }
 
   return (
