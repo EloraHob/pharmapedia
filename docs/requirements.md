@@ -27,7 +27,7 @@
       - 3.2d - Adverse effects: displayed as a list, no more than 20 items
       - 3.2e - Side effects: displayed as a list, no more than 20 items
    - 3.3 - Back arrow that, when clicked, will direct the user to the previous page
-4. Medication Interaction Feature
+4. Medication Interaction Feature COMPLETE (#12-18)
    - 4.1 - The page contains a heading with header text and subtext that indicate the purpose of the page.
    - 4.2 - A subheading will instruct the user on how to check for medication interactions. 
    - 4.3 - The software shall provide a means (search bar) for the user to search & select (as a button) medications in our database. 
@@ -39,7 +39,7 @@
       - 4.4b - Identified drug interactions will be displayed with the medication names, severity score (if one exists), and a brief information summary (less than 100 words).
       - 4.4c - A liability message will be displayed advising users to communicate with their healthcare provider, regardless of the results displayed by this system. 
 
-5. Search Feature and Errors
+5. Search Feature and Errors COMPLETE (#4, #5, #6, #7)
    - 5.1 - The search page contains a large heading indicating the purpose of the webpage (Search).
    - 5.2 - A prominent search bar will appear on the page, with an icon on the left and a ‘search’ button on the right. 
       - 5.2a - When the user clicks on the search bar, they are prompted to write text. If the input matches any medication names from the API, results will be displayed in a dropdown below the search bar. 
