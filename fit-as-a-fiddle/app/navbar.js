@@ -18,7 +18,7 @@ const MyNavbar = () => {
         <Image src="./logo.png" alt="App Logo" width="170" height="40" className="d-inline-block align-top" /> {' '}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarSupportedContent" />
-      <Navbar.Collapse id="navbarSupportedContent" className="me-2">
+      <Navbar.Collapse id="navbarSupportedContent">
         <Nav className="me-auto">
           <Nav.Link href="/" className="ms-3 me-4" active>Home</Nav.Link>
           <NavDropdown title="Features" id="navbarDropdown" className="me-4">
