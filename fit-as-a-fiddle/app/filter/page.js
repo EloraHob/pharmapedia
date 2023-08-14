@@ -5,7 +5,7 @@ import styles from './page.module.css';
 import Header from '../components/Header';
 import ResultsDisplayGrid from './ResultsDisplayGrid';
 import FilterSection from './FilterSection';
-import FilterSearch from './FilterSearch';
+import SearchBar from './SearchBar';
 import axios from 'axios';
 
 export default function Filter() {
@@ -43,11 +43,15 @@ export default function Filter() {
         } else {
           const formattedResults = response.data.results.map((result) => {
             const manufacturer = result.sponsor_name;
-            return result.products.map((product) => ({
-              drugName: product.brand_name,
-              manufacturer: manufacturer,
-              description: product.route
-            }));
+            return result.products.map((product) => {
+              const strength = product.active_ingredients?.[0]?.strength || '';
+          
+              return {
+                drugName: `${product.brand_name} ${strength}`.trim(),
+                manufacturer: manufacturer,
+                description: product.route
+              };
+            });
           }).flat();
           setSearchResults(formattedResults);
           setErrorMsg(null);
@@ -74,7 +78,7 @@ export default function Filter() {
       <div className='d-flex'>
         <FilterSection setActiveFilters={setActiveFilters} />
         <div className={styles.filterSearchContainer}>
-          <FilterSearch
+          <SearchBar
             placeholder="enter a drug or manufacturer name"
             fetchResults={fetchResults}
           />
