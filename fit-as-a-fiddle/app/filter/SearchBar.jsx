@@ -48,7 +48,7 @@ const SearchBar = ({ placeholder, fetchResults }) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <Button variant="outline-primary d-flex" onClick={handleSubmit}>
+      <Button variant="outline-primary d-flex me-5" onClick={handleSubmit}>
         <FaSearch size={20} className="pt-1" />
       </Button>
     </InputGroup>
