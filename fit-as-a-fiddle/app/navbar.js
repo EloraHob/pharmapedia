@@ -30,7 +30,7 @@ const MyNavbar = () => {
           </NavDropdown>
           <Nav.Link href="/about" className="me-4" active>About</Nav.Link>
         </Nav>
-        <Form className="d-flex ms-auto my-2 my-lg-0">
+        <Form className="d-flex ms-auto my-2 my-lg-0 me-2">
           <FormControl
             type="search"
             placeholder="Search"
