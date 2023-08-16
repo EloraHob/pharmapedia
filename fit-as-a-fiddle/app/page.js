@@ -40,43 +40,49 @@ export default function Home() {
         <section className={styles.mission}>
           <h1>We make it easier for you</h1>
           <section className={styles.features}>
-            <div className={styles.card}
-                onMouseEnter={() => handleToggleLearnMore(0, true)}
-                onMouseLeave={() => handleToggleLearnMore(0, false)}>
-              <div className={styles.name}>
-                <img src='./images/pill.png' alt='a pill icon' className={styles.img}/>
-                <h2>Information Filter</h2>
-              </div>
-              {showLearnMore[0] && (
-                <div className={styles.more}>Filter to browse medications based on a specific category or drug class and various other filterable options, such as drug formula, usages, company, etc.</div>
-              )}
-            </div>
-
-            <div
-              className={styles.card}
-              onMouseEnter={() => handleToggleLearnMore(1, true)}
-              onMouseLeave={() => handleToggleLearnMore(1, false)}>
-              <div className={styles.name}>
-                <img src='./images/search.png' alt='a search icon' className={styles.img}/>
-                <h2>Medication Search</h2>
-              </div>
-              {showLearnMore[1] && (
-                <div className={styles.more}>Search and find information of a specific medication, including drug formulas, usages, potential interactions, allergy information, and much more</div>
-              )}
-            </div>
-
-            <div
-              className={styles.card}
-              onMouseEnter={() => handleToggleLearnMore(2, true)}
-              onMouseLeave={() => handleToggleLearnMore(2, false)}>
+            <a href="/filter" className={styles.links}>
+              <div className={styles.card}
+                  onMouseEnter={() => handleToggleLearnMore(0, true)}
+                  onMouseLeave={() => handleToggleLearnMore(0, false)}>
                 <div className={styles.name}>
-                  <img src='./images/check.png' alt='a shield icon' className={styles.img}/>
-                  <h2>Interaction Check</h2>
+                  <img src='./images/pill.png' alt='a pill icon' className={styles.img}/>
+                  <h2>Information Filter</h2>
                 </div>
-                {showLearnMore[2] && (
-                    <div className={styles.more}>Check potential interactions between multiple medications. This will prevent potential harm due to a lack of knowledge of the drug interactions</div>
+                {showLearnMore[0] && (
+                  <div className={styles.more}>Filter to browse medications based on a specific category or drug class and various other filterable options, such as drug formula, usages, company, etc.</div>
                 )}
-            </div>
+              </div>
+            </a>
+
+            <a href="/search"  className={styles.links}>
+              <div
+                className={styles.card}
+                onMouseEnter={() => handleToggleLearnMore(1, true)}
+                onMouseLeave={() => handleToggleLearnMore(1, false)}>
+                <div className={styles.name}>
+                  <img src='./images/search.png' alt='a search icon' className={styles.img}/>
+                  <h2>Medication Search</h2>
+                </div>
+                {showLearnMore[1] && (
+                  <div className={styles.more}>Search and find information of a specific medication, including drug formulas, usages, potential interactions, allergy information, and much more</div>
+                )}
+              </div>
+            </a>
+
+            <a href="/interactions"  className={styles.links}>
+              <div
+                className={styles.card}
+                onMouseEnter={() => handleToggleLearnMore(2, true)}
+                onMouseLeave={() => handleToggleLearnMore(2, false)}>
+                  <div className={styles.name}>
+                    <img src='./images/check.png' alt='a shield icon' className={styles.img}/>
+                    <h2>Interaction Check</h2>
+                  </div>
+                  {showLearnMore[2] && (
+                      <div className={styles.more}>Check potential interactions between multiple medications. This will prevent potential harm due to a lack of knowledge of the drug interactions</div>
+                  )}
+              </div>
+            </a>
           </section>
         </section>
       </main>
