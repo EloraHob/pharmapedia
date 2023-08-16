@@ -4,6 +4,11 @@
   color: #242424;
 }
 
+.links {
+  text-decoration: none;
+  color: inherit; /* This will keep the link color the same as the parent element's color */
+}
+
 .banner {
   background-image: url('/images/banner.jpg');
   background-size: cover;
