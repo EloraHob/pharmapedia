@@ -53,10 +53,8 @@
 }
 
 .mission {
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin: 4rem;
+  margin-bottom: 3rem;
 }
 
 .cardContainer {
