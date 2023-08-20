@@ -41,13 +41,17 @@ export default function Filter() {
           setFirstVisit(false);
           setErrorMsg(response.data.error.message);
         } else {
+          console.log(response.data.results);
           const formattedResults = response.data.results.map((result) => {
             const manufacturer = result.sponsor_name;
             return result.products.map((product) => {
               const strength = product.active_ingredients?.[0]?.strength || '';
-          
+              const ingredient = product.active_ingredients?.[0]?.name || '';
+              console.log(ingredient);
               return {
-                drugName: `${product.brand_name} ${strength}`.trim(),
+                ingredient: ingredient,
+                drugName: product.brand_name,
+                strength: strength,
                 manufacturer: manufacturer,
                 description: product.route
               };
